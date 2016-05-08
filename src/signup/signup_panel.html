@@ -1,0 +1,190 @@
+<div class="pip-body ">
+    <div class="pip-content">
+        <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top">
+        </md-progress-linear>
+
+        <h2 pip-translate="SIGNUP_TITLE"></h2>
+
+        <form name="form" novalidate autocomplete="off">
+            <input type="email" style="display:none">
+            <input type="password" style="display:none">
+
+            <div ng-messages="form.$serverError" class="text-error bm8"  md-auto-hide="false">
+                <div ng-message="ERROR_1000">{{::'ERROR_1000' | translate}}</div>
+                <div ng-message="ERROR_1110">{{::'ERROR_1110' | translate}}</div>
+                <div ng-message="ERROR_1111">{{::'ERROR_1111' | translate}}</div>
+                <div ng-message="ERROR_1112">{{::'ERROR_1112' | translate}}</div>
+                <div ng-message="ERROR_-1">{{::'ERROR_SERVER' | translate}}</div>
+                <div ng-message="ERROR_UNKNOWN">
+                    {{ form.$serverError.ERROR_UNKNOWN | translate }}
+                </div>
+            </div>
+
+            <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">
+                {{::'ENTRY_CHANGE_SERVER' | translate}}
+            </a>
+
+            <div ng-show="showServerUrl">
+                <md-autocomplete
+                        ng-initial autofocus tabindex="1"
+                        class="pip-combobox w-stretch bm8"
+                        name="server"
+                        ng-enabled="!transaction.busy()"
+                        placeholder="{{::'ENTRY_SERVER_URL' | translate}}"
+                        md-no-cache="true"
+                        md-selected-item="data.serverUrl"
+                        md-search-text="selected.searchURLs"
+                        md-items="item in getMatches()"
+                        md-item-text="item"
+                        md-selected-item-change="onServerUrlChanged()"
+                        md-delay="200"
+                        ng-model="data.serverUrl"
+                        ng-disabled="transaction.busy()"
+                        pip-clear-errors>
+                    <span md-highlight-text="selected.searchURLs">{{item}}</span>
+                </md-autocomplete>
+            </div>
+
+
+            <md-input-container class="display bp4">
+                <label>{{::'FULLNAME' | translate}}</label>
+                <input name="signupFullName"
+                       ng-disabled="transaction.busy()" autocomplete="off"
+                       ng-model="data.name" ng-init="data.name = ''"
+                       required tabindex="2" pip-clear-errors
+                       ng-keypress="onEnter($event)">
+
+                <div class="hint text-overflow w-stretch"
+                     ng-if="touchedErrorsWithHint(form, form.signupFullName).hint">
+                    {{::'HINT_FULLNAME' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.signupFullName)"  md-auto-hide="false">
+                    <div ng-message="required">
+                        {{::'HINT_FULLNAME' | translate}} {{::'ERROR_FULLNAME_INVALID' | translate }}
+                    </div>
+                    <div ng-message="ERROR_1101">{{::'ERROR_1101' | translate}}</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="display bp4">
+                <label>{{::'EMAIL' | translate}}</label>
+                <input name="userEmail" ng-disabled="transaction.busy()" pip-clear-errors
+                       type="email" tabindex="3" ng-model="data.email"
+                       xxng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"
+                       required
+                       pip-email-unique="data.email"
+                       ng-keypress="onEnter($event)"
+                       pip-test="input-password"/>
+
+                <div class="hint" ng-if="touchedErrorsWithHint(form, form.userEmail).hint">
+                    {{::'HINT_EMAIL' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.userEmail)" md-auto-hide="false"  md-auto-hide="false">
+                    <div ng-message="required">{{::'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="email">{{::'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="emailUnique">{{::'ERROR_1104' | translate}}</div>
+                    <div ng-message="ERROR_1100">{{::'ERROR_1100' | translate}}</div>
+                    <div ng-message="ERROR_1106">{{::'ERROR_1106' | translate}}</div>
+                    <div ng-message="ERROR_1104">{{::'ERROR_1104' | translate}}</div>
+                    <div ng-message="ERROR_1300">{{::'ERROR_1300' | translate}}</div>
+                    <div ng-message="ERROR_1305">{{::'ERROR_1305' | translate}}</div>
+                    <div ng-message="ERROR_1301">{{::'ERROR_1301' | translate}}</div>
+                    <div ng-message="ERROR_1114">{{::'ERROR_1114' | translate}}</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="display bp4">
+                <label>{{::'PASSWORD_SET' | translate}}</label>
+                <input name="password" ng-disabled="transaction.busy()" pip-clear-errors
+                       type="password" tabindex="4" ng-model="data.password"
+                       required minlength="6"
+                       ng-keypress="onEnter($event)"
+                       pip-test="input-password"/>
+
+                <div class="hint" ng-if="touchedErrorsWithHint(form, form.password).hint">
+                    {{::'HINT_PASSWORD' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.password)"  md-auto-hide="false">
+                    <div ng-message="required">
+                        {{::'HINT_PASSWORD' | translate}}
+                    </div>
+                    <div ng-message="minlength">
+                        {{::'HINT_PASSWORD' | translate}}
+                    </div>
+                    <div ng-message="ERROR_1102" ng-if="!form.password.$pristine">
+                        {{::'ERROR_1102' | translate}}
+                    </div>
+                    <div ng-message="ERROR_1107" ng-if="!form.password.$pristine">
+                        {{::'ERROR_1107' | translate}}
+                    </div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="display bp4">
+                <label>{{::'PASSWORD_CONFIRM' | translate}}</label>
+                <input name="passwordConfirm"
+                       type="password" tabindex="4"
+                       required minlength="6"
+                       ng-model="confirmPassword"
+                       ng-disabled="transaction.busy()" pip-clear-errors
+                       compare-to="data.password"
+                       ng-keypress="onEnter($event)"
+                       pip-test="input-password"/>
+
+                <div class="hint" ng-if="touchedErrorsWithHint(form, form.passwordConfirm).hint">
+                    {{::'HINT_PASSWORD' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.passwordConfirm)"  md-auto-hide="false">
+                    <div ng-message="compareTo">
+                        {{::'PASSWORD_MATCH' | translate}}
+                    </div>
+                    <div ng-message="required">
+                        {{::'HINT_PASSWORD' | translate}}
+                    </div>
+                    <div ng-message="minlength">
+                        {{::'HINT_PASSWORD' | translate}}
+                    </div>
+                </div>
+            </md-input-container>
+
+            <p class="text-small-secondary">
+                {{::'SIGNUP_TEXT_11' | translate}}
+                <a href="#/legal/privacy">{{::'SIGNUP_PRIVACY' | translate}}</a>
+                {{::'SIGNUP_TEXT_12' | translate}}
+                <a href="#/legal/services">{{::'SIGNUP_SERVICES' | translate}}</a>
+            </p>
+
+            <md-button ng-hide="transaction.busy()" class="md-raised m0  md-accent w-stretch"
+                       ng-click="onSignup()" aria-label="SIGNUP"
+                       ng-disabled="form.$invalid || (form.$pristine && !data.email) || data.serverUrl.length == 0
+                               || data.email.length == 0 || (!data.password)
+                               || (!data.name) || data.name.length == 0 || data.password.length == 0">
+                {{::'SIGNUP_TITLE' | translate}}
+            </md-button>
+
+            <md-button ng-show="transaction.busy()" ng-click="transaction.abort()"
+                       class="md-raised md-warn m0 w-stretch" aria-label="ABORT">
+                {{::'CANCEL' | translate}}
+            </md-button>
+
+            <div layout="row" class="tm24" ng-if="$mdMedia('gt-xs')">
+                <p class="text-small m0">
+                    {{::'SIGNUP_TEXT_2' | translate}}
+                    <a href="" ng-click="gotoSignin()">
+                        {{::'SIGNUP_SIGNIN_HERE' | translate}}
+                    </a>
+                </p>
+            </div>
+            <div class="tm24 divider-top" ng-if="$mdMedia('xs')"
+                 style="margin-right: -16px; margin-left: -16px; background-color: rgb(238, 238, 238);">
+                <div class="h48" layout="row" layout-align="center end">
+                    <p class="bm0 text-small">{{::'SIGNUP_TEXT_2' | translate}}</p>
+                </div>
+                <div class="h48" layout="row" layout-align="center start">
+                    <p class="bm0 text-small"><a href="" ng-click="gotoSignin()">
+                        {{::'SIGNUP_SIGNIN_HERE' | translate}}</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+// @file CSS styles for entry pages
+// @copyright Digital Living Software Corp. 2014-2016
+
+@import "../node_modules/pip-webui-css/dist/pip-webui-css";
+
+md-dialog.pip-entry {
+
+  md-dialog-actions, md-dialog-content{
+    background-color: @color-content !important;
+  }
+
+  md-dialog-content {
+    max-width: 400px;
+    min-width: 400px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    @media (max-width: 768px) {
+      max-width: 100%;
+      min-width: 100%;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+}
+
+.pip-entry {
+
+  //background-image: url('images/entry_bg.png');
+  background-position: 50% 50%;
+
+  .pip-body{
+    padding-left: 24px;
+    padding-right: 24px;
+    @media (max-width: 768px) {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  md-input-container [ng-messages] ::after{
+    opacity: 1;
+  }
+
+  h2 {
+    margin-top: 0px;
+  }
+
+  md-input-container {
+    display: block;
+  }
+
+  .pip-ref-item {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .pip-entry {
+    .pip-body {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 0px;
+      background-color: @color-window;
+
+      .pip-content {
+        background-color: @color-content;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+      }
+    }
+  }
+}
+

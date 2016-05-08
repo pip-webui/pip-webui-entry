@@ -1,0 +1,136 @@
+<div class="pip-body">
+    <div class="pip-content">
+        <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top">
+        </md-progress-linear>
+
+        <h2 pip-translate="SIGNIN_TITLE"></h2>
+
+        <form name="form" novalidate>
+            <div ng-messages="form.$serverError" class="text-error bm8 color-error"  md-auto-hide="false">
+                <div ng-message="ERROR_1000">{{::'ERROR_1000' | translate}}</div>
+                <div ng-message="ERROR_1110">{{::'ERROR_1110' | translate}}</div>
+                <div ng-message="ERROR_1111">{{::'ERROR_1111' | translate}}</div>
+                <div ng-message="ERROR_1112">{{::'ERROR_1112' | translate}}</div>
+                <div ng-message="ERROR_-1">{{::'ERROR_SERVER' | translate}}</div>
+                <div ng-message="ERROR_UNKNOWN">
+                    {{ form.$serverError.ERROR_UNKNOWN | translate }}
+                </div>
+            </div>
+
+            <a ng-hide="showServerUrl || fixedServerUrl"
+               ng-click="showServerUrl = true" href=""
+               id="link-server-url"
+               pip-test="link-server-url">
+                {{::'ENTRY_CHANGE_SERVER' | translate}}
+            </a>
+
+            <div ng-show="showServerUrl">
+                <md-autocomplete
+                        ng-initial autofocus tabindex="1"
+                        class="pip-combobox w-stretch bm8"
+                        name="server"
+                        placeholder="{{::'ENTRY_SERVER_URL' | translate}}"
+                        md-no-cache="true"
+                        md-selected-item="data.serverUrl"
+                        md-search-text="selected.searchURLs"
+                        md-items="item in getMatches()"
+                        md-item-text="item"
+                        md-selected-item-change="onServerUrlChanged()"
+                        md-delay="200"
+                        ng-model="data.serverUrl"
+                        ng-disabled="transaction.busy()"
+                        pip-clear-errors
+                        pip-test="autocomplete-server">
+                    <span md-highlight-text="selected.searchURLs">{{item}}</span>
+                </md-autocomplete>
+            </div>
+
+            <md-input-container class="display  bp4">
+                <label>{{::'EMAIL' | translate}}</label>
+                <input name="email" type="email" ng-model="data.email" required step="any"
+                       ng-keypress="onEnter($event)"
+                       pip-clear-errors
+                       ng-disabled="transaction.busy()" tabindex="2"
+                       pip-test="input-email"/>
+
+                <div class="hint" ng-if="touchedErrorsWithHint(form, form.email).hint">
+                    {{::'HINT_EMAIL' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.email)" md-auto-hide="false">
+                    <div ng-message="required">{{::'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="email">{{::'ERROR_EMAIL_INVALID' | translate }}</div>
+                    <div ng-message="ERROR_1100">{{::'ERROR_1100' | translate}}</div>
+                    <div ng-message="ERROR_1106">{{::'ERROR_1106' | translate}}</div>
+                    <div ng-message="ERROR_1114">{{::'ERROR_1114' | translate}}</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="display bp4">
+                <label>{{::'PASSWORD' | translate}}</label>
+                <input name="password" ng-disabled="transaction.busy()" pip-clear-errors
+                       type="password" tabindex="3" ng-model="data.password"
+                       ng-keypress="onEnter($event)"
+                       required minlength="6"
+                       pip-test="input-password"/>
+
+                <div class="hint" ng-if="touchedErrorsWithHint(form, form.password).hint">
+                    {{::'HINT_PASSWORD' | translate}}
+                </div>
+                <div ng-messages="touchedErrorsWithHint(form, form.password)"  md-auto-hide="false">
+                    <div ng-message="required">{{::'HINT_PASSWORD' | translate}}</div>
+                    <div ng-message="minlength">{{::'HINT_PASSWORD' | translate}}</div>
+                    <div ng-message="ERROR_1102">{{::'ERROR_1102' | translate}}</div>
+                    <div ng-message="ERROR_1107">{{::'ERROR_1107' | translate}}</div>
+                </div>
+            </md-input-container>
+            <a href="" class="display bm16"
+               ng-click="gotoRecoverPassword()"
+               tabindex="4">
+                {{::'SIGNIN_FORGOT_PASSWORD' | translate}}</a>
+
+            <md-checkbox ng-disabled="transaction.busy()" md-no-ink class="lm0"
+                         aria-label="{{'SIGNIN_REMEMBER' | translate}}" tabindex="5"
+                         ng-model="data.remember"
+                         pip-test-checkbox="remember">
+                <label class="label-check">{{::'SIGNIN_REMEMBER' | translate}}</label>
+            </md-checkbox>
+
+            <div style="height: 36px; overflow: hidden;">
+                <md-button ng-if="!transaction.busy()" ng-click="onSignin()" aria-label="SIGNIN"
+                           class="md-raised md-accent w-stretch m0" tabindex="6"
+                           ng-disabled="(data.email == undefined) || data.email.length == 0 || data.serverUrl == '' ||
+                                   data.serverUrl == undefined || data.serverUrl.length == 0 || (data.password == undefined)"
+                           pip-test="button-signin">
+                    {{::'SIGNIN_TITLE' | translate}}
+                </md-button>
+                <md-button ng-if="transaction.busy()" ng-click="transaction.abort()" class="md-raised md-warn m0 w-stretch"
+                           tabindex="5" aria-label="ABORT"
+                           pip-test="button-cancel">
+                    {{::'CANCEL' | translate}}
+                </md-button>
+            </div>
+            <div layout="row" class="tm24" ng-if="!adminOnly && $mdMedia('gt-xs')">
+                <p class="m0 text-small"> <!--  <p class="a-question-text">  -->
+                    {{::'SIGNIN_NOT_MEMBER' | translate}}
+                    <a href=""
+                       ng-click="gotoSignup()"
+                       tabindex="6">
+                        {{::'SIGNIN_SIGNUP_HERE' | translate}}
+                    </a>
+                </p>
+            </div>
+
+            <div class="tm24 divider-top"
+                 style="margin-right: -16px; margin-left: -16px; background-color: rgb(238, 238, 238);"
+                 ng-if="!adminOnly && $mdMedia('xs')">
+                <div class="h48" layout="row" layout-align="center end">
+                    <p class="m0 text-small">{{::'SIGNIN_NOT_MEMBER' | translate}}</p>
+                </div>
+                <div class="h48" layout="row" layout-align="center start">
+                    <a class="text-small" ng-click="gotoSignup()" href="" tabindex="6">
+                        {{::'SIGNIN_SIGNUP_HERE' | translate}}
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

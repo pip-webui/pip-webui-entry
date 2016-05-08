@@ -1,0 +1,26 @@
+<!--
+@file Post-signup page
+@copyright Digital Living Software Corp. 2014-2016
+-->
+
+<div class="pip-card-container pip-outer-scroll pip-entry">
+    <pip-card width="400">
+        <pip-post-signup-panel
+                pip-data="data"
+                pip-created="$panel = $control"
+                pip-party="$party">
+
+        </pip-post-signup-panel>
+        <div class="pip-footer">
+            <md-button ng-hide="transaction.busy()" class="md-accent"
+                       ng-click="onPostSignupSubmit()" aria-label="CONTINUE">
+                {{::'CONTINUE' | translate}}
+            </md-button>
+
+            <md-button ng-show="transaction.busy()" class="md-warn"
+                       ng-click="transaction.abort()" aria-label="ABORT">
+                {{::'CANCEL' | translate}}
+            </md-button>
+        </div>
+    </pip-card>
+</div>

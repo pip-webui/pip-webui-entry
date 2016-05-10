@@ -15,8 +15,8 @@ module.exports = {
         port: 8009,
         publish: {
             bucket: 'webui.pipdevs.com',
-            accessKeyId: 'AKIAJCEXE5ML6CKW4I2Q',
-            secretAccessKey: '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',
+            accessKeyId: 'AKIAIEXTTAEEHYPHS3OQ',
+            secretAccessKey: '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',
             region: 'us-west-1'
         }
     }

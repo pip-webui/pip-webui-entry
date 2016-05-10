@@ -11,6 +11,8 @@
 (function () {
     'use strict';
 
+
+
     var thisModule = angular.module('pipEntry.PostSignup', ['pipEntry.Common', "pipPostSignupPanel"]);
 
     thisModule.controller('pipPostSignupController',

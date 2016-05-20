@@ -108,7 +108,6 @@
                     function (error) {
                         $rootScope.isSignin = false;
                         pipFormErrors.resetFormErrors($scope.form, true);
-                        console.log(error);
                         pipFormErrors.setFormError(
                             $scope.form, error,
                             {

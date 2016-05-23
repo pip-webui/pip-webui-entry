@@ -73,7 +73,7 @@
                     return;
                 }
             }
-
+  
             function onSignin() {
                 if ($scope.form.$invalid) {
                     pipFormErrors.resetFormErrors($scope.form, true);

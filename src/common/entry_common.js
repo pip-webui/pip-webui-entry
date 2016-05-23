@@ -37,7 +37,7 @@
     });
 
     thisModule.factory('pipEntryCommon',
-        function ($rootScope, $state, $window, pipAppBar, pipSession, pipRest, pipEntry) {
+        function ($rootScope, $state, $window, pipAppBar, pipSession, pipRest, pipEntry, pipFormErrors) {
             return {
                 configureAppBar: configureAppBar,
                 initScope: initScope
@@ -130,6 +130,18 @@
                         $scope.data.email = server.email;
                         $scope.data.password = server.password;
                     }
+                    
+                    pipFormErrors.resetFormErrors($scope.form, false);
+                    pipFormErrors.resetFieldsErrors($scope.form);
+                    // if ($scope.form) {
+                    //     for (var prop in $scope.form) {
+                    //         if ($scope.form[prop] && $scope.form[prop].$error) {
+                    //             console.log('prop error cleared', prop);
+                    //             $scope.form[prop].$error = {};
+                    //         };
+                    //     }
+                    // }
+                    // if ($scope.form && $scope.form.$error) $scope.form.$error = {};
                 };
             };            
         }

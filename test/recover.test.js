@@ -1,6 +1,6 @@
 'use strict';
 
-suite('Recover password', function () {
+describe('Recover password', function () {
     var pipEntryCommon,
         pipTransaction,
         pipAuthState,
@@ -10,9 +10,9 @@ suite('Recover password', function () {
         recoverRequestHandler, $state, rootScope;
     var formErrorSpy, configureAppBarSpy, initScopeSpy, beginTransactionSpy, endTransactionSpy;
 
-    setup(module('pipPages'));
+    beforeEach(module('pipPages'));
 
-    setup(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_,
+    beforeEach(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_,
                            _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipRest_) {
 
         pipEntryCommon = _pipEntryCommon_;
@@ -65,11 +65,11 @@ suite('Recover password', function () {
     }));
 
 
-    test('should initialize scope data', function () {
+    it('should initialize scope data', function () {
         assert.isTrue(initScopeSpy.called);
     });
 
-    test('should reject submit when form is invalid', function () {
+    it('should reject submit when form is invalid', function () {
         var resetCallSpy = sinon.spy(pipRest.recoverPassword, "call");
 
         scope.form.$invalid = true;
@@ -79,9 +79,9 @@ suite('Recover password', function () {
         assert.isTrue(formErrorSpy.calledWith(scope.form, true));
     });
 
-    test('should provide  after filling form (success case)', function () {
+    it('should provide  after filling form (success case)', function () {
 
-        scope.data.email = 'test2piplife@yandex.ru';
+        scope.data.email = 'it2piplife@yandex.ru';
         scope.data.serverUrl = 'http://alpha.pipservices.net';
 
         recoverRequestHandler.respond(scope.data);
@@ -98,7 +98,7 @@ suite('Recover password', function () {
 
     });
 
-    test('should provide email verification after filling form (error case)', function () {
+    it('should provide email verification after filling form (error case)', function () {
 
         var setFormErrorSpy = sinon.spy(pipFormErrors, "setFormError");
 

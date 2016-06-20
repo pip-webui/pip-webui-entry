@@ -1,6 +1,6 @@
 'use strict';
 
-suite('Verify', function () {
+describe('Verify', function () {
     var pipEntryCommon,
         pipTransaction,
         pipAuthState,
@@ -10,9 +10,9 @@ suite('Verify', function () {
         verifyRequestHandler, $state, rootScope;
     var formErrorSpy, configureAppBarSpy, initScopeSpy, beginTransactionSpy, endTransactionSpy;
 
-    setup(module('pipPages'));
+    beforeEach(module('pipPages'));
 
-    setup(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_,
+    beforeEach(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_,
                            _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipRest_) {
 
         pipEntryCommon = _pipEntryCommon_;
@@ -59,15 +59,15 @@ suite('Verify', function () {
 
     }));
 
-    test('should initialize header', function () {
+    it('should initialize header', function () {
         assert.isTrue(configureAppBarSpy.called);
     });
 
-    test('should initialize scope data', function () {
+    it('should initialize scope data', function () {
         assert.isTrue(initScopeSpy.called);
     });
 
-    test('should reject submit when form is invalid', function () {
+    it('should reject submit when form is invalid', function () {
         var verifyCallSpy = sinon.spy(pipRest.verifyEmail,"call");
 
         scope.form.$invalid = true;
@@ -77,9 +77,9 @@ suite('Verify', function () {
         assert.isTrue(formErrorSpy.calledWith(scope.form, true));
     });
 
-    test('should provide email verification after filling form (success case)', function () {
+    it('should provide email verification after filling form (success case)', function () {
 
-        scope.data.email = 'test2piplife@yandex.ru';
+        scope.data.email = 'it2piplife@yandex.ru';
         scope.data.name = 'Boy';
         scope.data.password = '123456';
         scope.data.serverUrl = 'http://alpha.pipservices.net';
@@ -97,7 +97,7 @@ suite('Verify', function () {
         assert.isTrue(formErrorSpy.calledWith(scope.form, false));
     });
 
-    test('should provide email verification after filling form (error case)', function () {
+    it('should provide email verification after filling form (error case)', function () {
 
         var setFormErrorSpy = sinon.spy(pipFormErrors,"setFormError");
 

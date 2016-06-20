@@ -1,22 +1,22 @@
 'use strict';
 
-suite('SignIn', function () {
+describe('SignIn', function () {
     var pipEntryCommon,
         pipTransaction,
         pipAuthState,
         pipSession,
         pipFormErrors,
-        pipTestUserParty,
+        pipitUserParty,
         controller, scope, $httpBackend,
         signinRequestHandler, provider, $state;
     var signoutSpy, configureAppBarSpy, initScopeSpy, beginTransactionSpy;
 
-    setup(module('pipPages'));
-    setup(module('pipTest.UserParty'));
-    setup(module('pipTest.General'));
+    beforeEach(module('pipPages'));
+    beforeEach(module('pipit.UserParty'));
+    beforeEach(module('pipit.General'));
 
-    setup(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipSession_,
-                           _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipTestUserParty_) {
+    beforeEach(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipSession_,
+                           _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipitUserParty_) {
         pipEntryCommon = _pipEntryCommon_;
         pipTransaction = _pipTransaction_;
         pipAuthState = _pipAuthState_;
@@ -46,7 +46,7 @@ suite('SignIn', function () {
             pipFormErrors: _pipFormErrors_
         });
 
-        pipTestUserParty = _pipTestUserParty_;
+        pipitUserParty = _pipitUserParty_;
 
         scope.form = {};
         scope.form.$setPristine = function () {};
@@ -59,12 +59,12 @@ suite('SignIn', function () {
 
     }));
 
-    test('should initialize scope data', function () {
+    it('should initialize scope data', function () {
         assert.isTrue(initScopeSpy.called);
     });
 
 
-    test('should reject submit when form is invalid', function () {
+    it('should reject submit when form is invalid', function () {
 
         var formErrorSpy = sinon.spy(pipFormErrors, "resetFormErrors");
         var signinSpy = sinon.spy(pipSession, "signin");
@@ -79,17 +79,17 @@ suite('SignIn', function () {
 
     });
 
-    test('should provide signin to system after filling form (success case)', function (done) {
+    it('should provide signin to system after filling form (success case)', function (done) {
         assert.isDefined(scope.showServerError);
         assert.isDefined(scope.onSignin);
 
-        scope.data.email = pipTestUserParty.getParty().email;
+        scope.data.email = pipitUserParty.getParty().email;
         scope.data.password = '123456';
         scope.data.serverUrl = 'http://alpha.pipservices.net';
 
         signinRequestHandler = $httpBackend
             .when('POST', scope.data.serverUrl + '/api/signin')
-            .respond(pipTestUserParty.getParty());
+            .respond(pipitUserParty.getParty());
 
         var spy = sinon.spy(pipSession, "signin");
         var authorizedSpy = sinon.spy(pipAuthState, "goToAuthorized");

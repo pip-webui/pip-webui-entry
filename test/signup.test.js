@@ -1,6 +1,6 @@
 'use strict';
 
-suite('SignUp', function () {
+describe('SignUp', function () {
     var pipEntryCommon,
         pipTransaction,
         pipAuthState,
@@ -12,9 +12,9 @@ suite('SignUp', function () {
     var signoutSpy, configureAppBarSpy, initScopeSpy, beginTransactionSpy, endTransactionSpy;
     var sandbox;
 
-    setup(module('pipPages'));
+    beforeEach(module('pipPages'));
 
-    setup(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipSession_,
+    beforeEach(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipSession_,
                            _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipRest_) {
         pipEntryCommon = _pipEntryCommon_;
         pipTransaction = _pipTransaction_;
@@ -67,11 +67,11 @@ suite('SignUp', function () {
     }));
 
 
-    test('should initialize scope data', function () {
+    it('should initialize scope data', function () {
         assert.isTrue(initScopeSpy.called);
     });
 
-    test('should reject submit when form is invalid', function () {
+    it('should reject submit when form is invalid', function () {
 
         var formErrorSpy = sinon.spy(pipFormErrors,"resetFormErrors");
         var signupSpy = sinon.spy(pipRest, "signup");
@@ -86,11 +86,11 @@ suite('SignUp', function () {
 
     });
 
-    test('should provide signup to system after filling form (success case)', function (done) {
+    it('should provide signup to system after filling form (success case)', function (done) {
         assert.isDefined(scope.showServerError);
         assert.isDefined(scope.onSignup);
 
-        scope.data.email = 'test2piplife@yandex.ru';
+        scope.data.email = 'it2piplife@yandex.ru';
         scope.data.name = 'Boy';
         scope.data.password = '123456';
         scope.data.serverUrl = 'http://alpha.pipservices.net';
@@ -113,7 +113,7 @@ suite('SignUp', function () {
 
         done();
     });
-    test('should provide signup to system after filling form (error case)', function () {
+    it('should provide signup to system after filling form (error case)', function () {
         var errorObj = {};
 
         var stubSignup =   sandbox.stub(pipRest.signup(), "call").callsArgWith(2, errorObj);

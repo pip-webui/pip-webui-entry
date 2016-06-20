@@ -1,15 +1,15 @@
 'use strict';
 
-suite('PostSignUp', function () {
+describe('PostSignUp', function () {
     var pipEntryCommon, pipTransaction, pipAuthState,
         pipFormErrors, pipRest, controller, scope, $httpBackend,
         partiesRequestHandler, $state, rootScope;
     var formErrorSpy , configureAppBarSpy, initScopeSpy, beginTransactionSpy, endTransactionSpy;
     var party;
 
-    setup(module('pipPages'));
+    beforeEach(module('pipPages'));
 
-    setup(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipEnums_, _pipTranslate_,
+    beforeEach(inject(function (_pipEntryCommon_, _pipTransaction_, _pipAuthState_, _pipEnums_, _pipTranslate_,
                            _pipFormErrors_, $controller, $rootScope, $injector, _$state_, _pipRest_) {
         pipEntryCommon = _pipEntryCommon_;
         pipTransaction = _pipTransaction_;
@@ -71,11 +71,11 @@ suite('PostSignUp', function () {
 
 
 
-    test('should initialize scope data', function () {
+    it('should initialize scope data', function () {
         assert.isTrue(initScopeSpy.called);
     });
 
-    test('should save picture', function () {
+    it('should save picture', function () {
         scope.picture = {
             save:function(param1, param2){}
         };
@@ -85,7 +85,7 @@ suite('PostSignUp', function () {
         assert.isTrue(pictureSaveSpy.calledWith(sinon.match.func, sinon.match.func));
     });
 
-    test('should reject submit when form is invalid', function () {
+    it('should reject submit when form is invalid', function () {
         var partiesUpdateSpy = sinon.spy(pipRest.parties(),"update");
 
         scope.form.$invalid = true;
@@ -97,7 +97,7 @@ suite('PostSignUp', function () {
 
     });
 
-    test('should provide post signup submit (success case)', function () {
+    it('should provide post signup submit (success case)', function () {
 
         partiesRequestHandler.respond(party);
         pipRest.serverUrl(party.serverUrl);
@@ -115,7 +115,7 @@ suite('PostSignUp', function () {
         assert.isTrue(endTransactionSpy.called);
     });
 
-    test('should provide post signup submit (error case)', function () {
+    it('should provide post signup submit (error case)', function () {
         var errorObj = {};
         rootScope.$state.name = party.name;
         rootScope.$state.params = "";

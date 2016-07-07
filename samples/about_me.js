@@ -35,7 +35,7 @@
         function ($scope, pipAppBar) {
 
             pipAppBar.showMenuNavIcon();
-            pipAppBar.showTitleText('About Me');
+            pipAppBar.showTitleText('ABOUT_ME');
             pipAppBar.showLocalActions([], []);
             pipAppBar.showShadow();
         }

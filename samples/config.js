@@ -8,12 +8,13 @@
 (function () {
     'use strict';
 
-    var thisModule = angular.module('pipSampleConfig', ['pipRest.State', 'pipRest', 'pipEntry', 'pipSideNav', 'pipAppBar']);
+    var thisModule = angular.module('pipSampleConfig',
+        ['pipRest.State', 'pipRest', 'pipEntry', 'pipSideNav', 'pipAppBar']);
 
     // Configure application services before start
     thisModule.config(
-        function ($mdThemingProvider, $mdIconProvider, $urlRouterProvider, pipAuthStateProvider, pipRestProvider, 
-            pipSideNavProvider, pipAppBarProvider, pipEntryProvider) {
+        function ($mdIconProvider, $urlRouterProvider, pipAuthStateProvider, pipRestProvider,
+            pipSideNavProvider, pipAppBarProvider, pipTranslateProvider) {
 
             $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
 
@@ -24,14 +25,26 @@
             ]);
 
             // Configure REST API
-            //pipRestProvider.version('1.0');
+            // pipRestProvider.version('1.0');
             pipRestProvider.serverUrl('http://alpha.pipservices.net');
+            $urlRouterProvider.otherwise(function ($injector, $location) {
+                return $location.$$path === '' ? '/' : '/welcome';
+            });
 
+            // String translations
+            pipTranslateProvider.translations('en', {
+                SAMPLE_APPLICATION: 'Sample application',
+                ABOUT_ME: 'About Me',
+                ABOUT_SYSTEM: 'About system',
+                SIGNOUT: 'Sign out'
+            });
 
-             $urlRouterProvider.otherwise(function ($injector, $location) {
-                 if ($location.$$path == '') return '/';
-                 else  return '/welcome';
-             });
+            pipTranslateProvider.translations('ru', {
+                SAMPLE_APPLICATION: 'Пример приложения',
+                ABOUT_ME: 'Обо мне',
+                ABOUT_SYSTEM: 'О системе',
+                SIGNOUT: 'Выйти'
+            });
 
             // Configure default states
             pipAuthStateProvider.unauthorizedState('welcome');
@@ -41,15 +54,15 @@
             pipSideNavProvider.sections([
                 {
                     links: [
-                        {title: 'About Me', url: '/about_me'},
-                        {title: 'About System', url: '/about_system'},
+                        {title: 'ABOUT_ME', url: '/about_me'},
+                        {title: 'ABOUT_SYSTEM', url: '/about_system'}
                     ]
                 },
                 {
                     links: [
-                        {title: 'Signout', url: '/signout'}
+                        {title: 'SIGNOUT', url: '/signout'}
                     ]
-                },
+                }
             ]);
 
         }

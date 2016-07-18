@@ -1,11 +1,9 @@
 /**
- * @file AboutMe page for sample application
+ * @file About Me page for sample application
  * @copyright Digital Living Software Corp. 2014-2016
  */
 
-/* global angular */
-
-(function () {
+(function (angular) {
     'use strict';
 
     var thisModule = angular.module('pipAboutMe', ['pipTranslate', 'pipRest']);
@@ -34,15 +32,13 @@
         });
 
     thisModule.controller('pipAboutMeController',
-        function ($scope, pipAppBar, $rootScope, user) {
+        function ($scope, pipAppBar) {
 
             pipAppBar.showMenuNavIcon();
-            pipAppBar.showTitleText('About Me');
+            pipAppBar.showTitleText('ABOUT_ME');
             pipAppBar.showLocalActions([], []);
             pipAppBar.showShadow();
-
-
         }
     );
 
-})();
+})(window.angular);

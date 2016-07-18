@@ -76,7 +76,7 @@
         
                 // Fixed server url shall disable changing URL by the user
                 if (pipEntry.fixedServerUrl()) {
-                    $scope.data.serverUrl = pipEntry.fixedServerUrl();
+                    $scope.data.serverUrl = pipRest.serverUrl();
                     $scope.fixedServerUrl = true;  
                 }
                         

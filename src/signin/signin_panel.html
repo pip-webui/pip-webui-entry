@@ -108,7 +108,7 @@
                     {{::'CANCEL' | translate}}
                 </md-button>
             </div>
-            <div layout="row" class="tm24" ng-if="!adminOnly && $mdMedia('gt-xs')">
+            <div class="tm24 layout-row" ng-if="!adminOnly && $mdMedia('gt-xs')">
                 <p class="m0 text-small"> <!--  <p class="a-question-text">  -->
                     {{::'SIGNIN_NOT_MEMBER' | translate}}
                     <a href=""
@@ -122,10 +122,10 @@
             <div class="tm24 divider-top"
                  style="margin-right: -16px; margin-left: -16px; background-color: rgb(238, 238, 238);"
                  ng-if="!adminOnly && $mdMedia('xs')">
-                <div class="h48" layout="row" layout-align="center end">
+                <div class="h48 layout-row layout-align-center-end">
                     <p class="m0 text-small">{{::'SIGNIN_NOT_MEMBER' | translate}}</p>
                 </div>
-                <div class="h48" layout="row" layout-align="center start">
+                <div class="h48 layout-row layout-align-center -start">
                     <a class="text-small" ng-click="gotoSignup()" href="" tabindex="6">
                         {{::'SIGNIN_SIGNUP_HERE' | translate}}
                     </a>

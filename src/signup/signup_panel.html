@@ -167,7 +167,7 @@
                 {{::'CANCEL' | translate}}
             </md-button>
 
-            <div layout="row" class="tm24" ng-if="$mdMedia('gt-xs')">
+            <div class="tm24 layout-row" ng-if="$mdMedia('gt-xs')">
                 <p class="text-small m0">
                     {{::'SIGNUP_TEXT_2' | translate}}
                     <a href="" ng-click="gotoSignin()">
@@ -177,10 +177,10 @@
             </div>
             <div class="tm24 divider-top" ng-if="$mdMedia('xs')"
                  style="margin-right: -16px; margin-left: -16px; background-color: rgb(238, 238, 238);">
-                <div class="h48" layout="row" layout-align="center end">
+                <div class="h48 layout-row layout-align-center-end">
                     <p class="bm0 text-small">{{::'SIGNUP_TEXT_2' | translate}}</p>
                 </div>
-                <div class="h48" layout="row" layout-align="center start">
+                <div class="h48 layout-row layout-align-center-start">
                     <p class="bm0 text-small"><a href="" ng-click="gotoSignin()">
                         {{::'SIGNUP_SIGNIN_HERE' | translate}}</a></p>
                 </div>

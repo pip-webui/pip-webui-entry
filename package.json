@@ -1,35 +1,34 @@
 {
-  "name": "pip-webui-entry",
-  "version": "1.0.0",
-  "author": "Digital Living Software Corp. <www.digitallivingsoftware.com>",
-  "description": "Entry pages for Pip.WebUI applications",
-  "contributors": [
-    {
-      "name": "Sergey Seroukhov",
-      "email": "seroukhov@gmail.com"
+    "name": "pip-webui-entry",
+    "version": "1.0.0",
+    "author": "Digital Living Software Corp. <www.digitallivingsoftware.com>",
+    "description": "Entry pages for Pip.WebUI applications",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        },
+        {
+            "name": "Katerina Negrienko",
+            "email": "katya@negrienko.com"
+        }
+    ],
+    "keywords": [
+        "pip",
+        "webui",
+        "entry"
+    ],
+    "noAnalyze": true,
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "build": "gulp build",
+        "lint": "gulp lint",
+        "samples": "gulp launch",
+        "test": "karma start"
     },
-    {
-      "name": "Katerina Negrienko",
-      "email": "katya@negrienko.com"
+    "dependencies": {},
+    "devDependencies": {
+        "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
     }
-  ],
-  "keywords": [
-    "pip",
-    "webui",
-    "entry"
-  ],
-  "noAnalyze": true,
-  "license": "Commercial",
-  "private": true,
-  "scripts": {
-    "build": "gulp build",
-    "lint": "gulp lint",
-    "samples": "gulp launch",
-    "test": "karma start"
-  },
-  "dependencies": {
-  },
-  "devDependencies": {
-    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
-  }
 }

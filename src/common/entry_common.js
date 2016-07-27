@@ -47,8 +47,8 @@
             
             function configureAppBar() {
                 pipAppBar.hideNavIcon();
-                if (pipAppBar.appLogo) {
-                    pipAppBar.showTitleLogo(pipAppBar.appLogo);
+                if (pipAppBar.config().appTitleLogo) {
+                    pipAppBar.showTitleLogo(pipAppBar.config().appTitleLogo);
                 }
                 else {
                     pipAppBar.showTitleLogo('images/piplife_logo.svg');

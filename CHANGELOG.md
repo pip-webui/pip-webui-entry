@@ -1,38 +1,19 @@
-# Changelog
+# Pip.WebUI Changelog
 
-### 1.0.0 (2016-05-01)
------
+## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
-#### Enhancements:
+Initial release with user signup, signin, password and email management pages
 
-* **signin** Signin panel, page and dialog
-* **signup** Signup panel, page and dialog
-* **post signup** Post signup panel, page and dialog
-* **recover password** Recover panel, page and dialog
-* **reset password** Reset password panel, page and dialog
-* **verify email** Verify email page
+### Features
+* **signin**: signin panel, page and dialog
+* **signup**: signup panel, page and dialog
+* **post signup**: post signup panel, page and dialog
+* **recover password**: recover panel, page and dialog
+* **reset password**: reset password panel, page and dialog
+* **verify email**: verify email page
 
-#### Breaking Changes
-* API in most controls was changed since the previous version
+### Breaking Changes
+No breaking changes in this version
 
-#### Bug Fixes
+### Bug Fixes
 No fixes in this version
-
-<br/>
-
-### 0.0.0 (2016-01-01) Template
------
-
-#### Enhancements:
-
-* new performed features
-
-#### Breaking Changes
-* what has been changed
-
-#### Bug Fixes
-
-* [#1234](http://link_to_pull_request) Some description of new feature
-* [#1234](http://link_to_pull_request) Some description of new feature
-* [#1234](http://link_to_pull_request) Some description of new feature
-* [#1234](http://link_to_pull_request) Some description of new feature

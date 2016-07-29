@@ -205,6 +205,94 @@ Todo: Add HTML snippet that demonstrates directive with attributes
 Todo: List the directive attributes
 
 
+## <a name="recover_password_page"></a> Recover password page
+
+**Recover password** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Reset password** form where he can enter received code and set a new password.
+
+The form depends on **recover_password** operation in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
+
+Navigation to the **Recover password** page can be done using **recover_password** state or **#/recover_password** route. 
+
+Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
+
+### Usage
+
+Todo: Add code snippet to demonstrate navigation to this page
+
+<img src="images/img-recover-password.png"/>
+
+
+## <a name="recover_password_dialog"></a> pipRecoverPasswordDialog
+
+**pipRecoverPasswordDialog** provides the same recover password form as **Recover password** page, but it shows it as a dialog. 
+
+### Usage
+Todo: Add code snippet to demonstrate how to call the dialog
+
+### Methods
+* **show(params: any, successCallback, cancelCallback): void** - shows the dialog
+  - Params:
+    + params - dialog parameters
+    + successCallback - callback function that is called when password recover was successfully initiated
+    + cancelCallback - callback function that is called when user cancels the dialog
+
+
+## <a name="recover_password_panel"></a> pip-recover-password-panel
+
+**pip-recover-password-panel** provides the same recover password form as **Recover password** page, but it shows it as a panel, that can be placed on any custom form.
+
+### Usage
+Todo: Add HTML snippet that demonstrates directive with attributes
+
+### Attributes
+Todo: List the directive attributes
+
+
+## <a name="reset_password_page"></a> Reset password page
+
+**Reset password** form is opened right after **Recover password**. It allows to enter a new password after providing a valid reset code.
+
+The form depends on **reset_password** operation in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
+
+Navigation to the **Reset password** page can be done using **reset_password** state or **#/reset_password** route. 
+
+Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
+
+### Usage
+
+Todo: Add code snippet to demonstrate navigation to this page
+
+<img src="images/img-reset-password.png"/>
+
+
+## <a name="reset_password_dialog"></a> pipResetPasswordDialog
+
+**pipResetPasswordDialog** provides the same reset password form as **Reset password** page, but it shows it as a dialog. 
+
+### Usage
+Todo: Add code snippet to demonstrate how to call the dialog
+
+### Methods
+* **show(params: any, successCallback, cancelCallback): void** - shows the dialog
+  - Params:
+    + params - dialog parameters
+    + successCallback - callback function that is called when password was successfully reset
+    + cancelCallback - callback function that is called when user cancels the dialog
+
+
+## <a name="reset_password_panel"></a> pip-reset-password-panel
+
+**pip-reset-password-panel** provides the same reset password form as **Reset password** page, but it shows it as a panel, that can be placed on any custom form.
+
+### Usage
+Todo: Add HTML snippet that demonstrates directive with attributes
+
+### Attributes
+Todo: List the directive attributes
+
+
 ## <a name="issues"></a> Questions and bugs
 
 If you have any questions regarding the module, you can ask them using our 

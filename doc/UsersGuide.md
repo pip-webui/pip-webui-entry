@@ -414,4 +414,4 @@ $state.go('verify_email', { server_url:'url', email:'email@email.com', code='123
 If you have any questions regarding the module, you can ask them using our 
 [discussion forum](https://groups.google.com/forum/#!forum/pip-webui).
 
-Bugs related to this module can be reported using [github issues](https://github.com/pip-webui/pip-webui-settings/issues).
+Bugs related to this module can be reported using [github issues](https://github.com/pip-webui/pip-webui-entry/issues).

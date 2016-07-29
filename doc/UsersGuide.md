@@ -95,7 +95,6 @@ Navigation to the **Signin** page can be done using **signin** state or **#/sign
 Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider. **adminOnly** setting in **pipEntry** allows to restrict signins only to users with admin roles. It also hides links to signup since new users do not get admin privileges by default.
 
 ### Usage
-
 Yon can go in html
 ```html
 <md-button href="#/signin">Sign In</md-button>
@@ -132,7 +131,6 @@ thisModule.controller('customController', function (pipSigninDialog) {
 **pip-signin-panel** provides the same signin form as **Signin** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-
 ```html
 <pip-signin-panel pip-goto-signup-dialog="pipGotoSignupDialog"
                   pip-goto-recover-password-dialog="pipGotoRecoverPasswordDialog">
@@ -157,7 +155,6 @@ Navigation to the **Signup** page can be done using **signup** state or **#/sign
 Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
-
 You can go in html
 ```html
 <md-button href="#/signup">Sign Up</md-button>
@@ -194,7 +191,6 @@ thisModule.controller('customController', function (pipSignupDialog) {
 **pip-signup-panel** provides the same signup form as **Signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-
 ```html
 <pip-signup-panel pip-goto-signin-dialog="pipGotoSigninDialog"
                   pip-post-signup="pipPostSignup">
@@ -217,7 +213,6 @@ The form depends on **users** and **files** operations in REST API.
 Navigation to the **Post-signup** page can be done using **post_signup** state or **#/post_signup** route. It takes an optional parameter to redirect after successful signup.
 
 ### Usage
-
 You can go in html
 ```html
 <md-button href="#/post_signup?party_id='id'">Post Sign Up</md-button>
@@ -258,7 +253,6 @@ thisModule.controller('customController', function (pipPostSignupDialog) {
 **pip-post-signup-panel** provides the same pos-signup form as **Post-signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-
 ```html
 <pip-post-signup-panel pip-data="data"
                        pip-created="$panel = $control"
@@ -284,7 +278,6 @@ Navigation to the **Recover password** page can be done using **recover_password
 Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
-
 Yon can go in html
 ```html
 <md-button href="#/recover_password">Recover password</md-button>
@@ -321,7 +314,6 @@ thisModule.controller('customController', function (pipRecoverPasswordDialog) {
 **pip-recover-password-panel** provides the same recover password form as **Recover password** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-
 ```html
 <pip-recover-password-panel pip-data="data"
                 pip-created="$panel = $control"
@@ -347,7 +339,6 @@ Navigation to the **Reset password** page can be done using **reset_password** s
 Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
-
 Yon can go in html
 ```html
 <md-button href="#/reset_password?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>
@@ -406,7 +397,6 @@ Navigation to the **Verify email** page can be done using **verify** state or **
 Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
-
 Yon can go in html
 ```html
 <md-button href="#/verify_email?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>

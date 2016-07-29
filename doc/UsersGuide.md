@@ -63,6 +63,10 @@ angular.module('myApp',[..., 'pipEntry']);
 ### Usage
 Todo: Add code snippet to demonstrate how to configure entry page
 
+```javascript
+
+```
+
 ### Methods
 
 * **adminOnly(newValue: bool): bool** - sets requirement for users to have administrative role to enter the application.
@@ -88,7 +92,9 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```javascript
+<md-button href="#/signin">Sign In</md-button>
+```
 
 <img src="images/img-signin.png"/>
 
@@ -139,7 +145,10 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```javascript
+<md-button href="#/signup">Sign Up</md-button>
+```
+
 
 <img src="images/img-signup.png"/>
 
@@ -188,7 +197,9 @@ Navigation to the **Post-signup** page can be done using **post_signup** state o
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```html
+<md-button href="#/post_signup?party_id='id'">Sign In</md-button>
+```
 
 <img src="images/img-post-signup.png"/>
 
@@ -272,8 +283,10 @@ Todo: Add code snippet to demonstrate how to call the dialog
 ```
 
 ### Attributes
-Todo: List the directive attributes
 
+* **pip-data** - party object
+* **pip-created** - object with onRecover function
+* **pip-goto-reset** - function for routing on reset state
 
 ## <a name="reset_password_page"></a> Reset password page
 
@@ -320,8 +333,9 @@ Todo: Add code snippet to demonstrate how to call the dialog
 ```
 
 ### Attributes
-Todo: List the directive attributes
 
+* **pip-data** - party object
+* **pip-created** - object with onReset function
 
 ## <a name="verify_email_page"></a>Verify email page
 

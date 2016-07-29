@@ -64,7 +64,10 @@ angular.module('myApp',[..., 'pipEntry']);
 Todo: Add code snippet to demonstrate how to configure entry page
 
 ```javascript
+pipRestProvider.serverUrl('http://alpha.pipservices.net');
 
+pipAuthStateProvider.unauthorizedState('signin');
+pipAuthStateProvider.authorizedState('about_me');
 ```
 
 ### Methods
@@ -84,7 +87,7 @@ Todo: Add code snippet to demonstrate how to configure entry page
 **Signin** page allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter. 
 
 The form depends on **signin** operation in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Signin** page can be done using **signin** state or **#/signin** route. It takes an optional parameter to redirect after successful signin.
 
@@ -92,7 +95,7 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-```javascript
+```html
 <md-button href="#/signin">Sign In</md-button>
 ```
 
@@ -137,7 +140,7 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **Signup** form allows users to register their account in application. The form is intentionally made ultra-short to low the barrier to entry for new users. Additional information can be entered in optional **Post-signup** form.
 
 The form depends on **signup** operation in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Signup** page can be done using **signup** state or **#/signup** route. It takes an optional parameter to redirect after successful signup.
 
@@ -145,7 +148,7 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-```javascript
+```html
 <md-button href="#/signup">Sign Up</md-button>
 ```
 
@@ -191,14 +194,14 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **Post signup** form can be opened right after signup to ask user to enter additional information: date of birth, avatar, location, pick preferred color theme.
 
 The form depends on **users** and **files** operations in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Post-signup** page can be done using **post_signup** state or **#/post_signup** route. It takes an optional parameter to redirect after successful signup.
 
 ### Usage
 
 ```html
-<md-button href="#/post_signup?party_id='id'">Sign In</md-button>
+<md-button href="#/post_signup?party_id='id'">Post Sign Up</md-button>
 ```
 
 <img src="images/img-post-signup.png"/>
@@ -241,7 +244,7 @@ Todo: List the directive attributes
 **Recover password** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Reset password** form where he can enter received code and set a new password.
 
 The form depends on **recover_password** operation in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Recover password** page can be done using **recover_password** state or **#/recover_password** route. 
 
@@ -293,7 +296,7 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **Reset password** form is opened right after **Recover password**. It allows to enter a new password after providing a valid reset code.
 
 The form depends on **reset_password** operation in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Reset password** page can be done using **reset_password** state or **#/reset_password** route. 
 
@@ -342,7 +345,7 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **Verify email** form allows users to confirm their primary email addresses by entering verification code they shall receive via email right after registration. This form is usually opened using a link in the email with the code. For that reason it doesn't come as dialogs or panels (shall we add that?). After successful verification it switches to **Verify success** form. Form their user can continue using the application.
 
 The form depends on **verify_email** operation in REST API.
-Todo: Add reference to pip-webui-rest to the protocol definition
+[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
 
 Navigation to the **Verify email** page can be done using **verify** state or **#/reset_password** route. 
 

@@ -47,7 +47,7 @@
             });
 
             // Configure default states
-            pipAuthStateProvider.unauthorizedState('welcome');
+            pipAuthStateProvider.unauthorizedState('signin');
             pipAuthStateProvider.authorizedState('about_me');
 
             // Configure navigation menu

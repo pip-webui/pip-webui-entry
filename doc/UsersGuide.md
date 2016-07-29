@@ -96,8 +96,13 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
+Yon can go in html
 ```html
 <md-button href="#/signin">Sign In</md-button>
+```
+or in js
+```javascript
+$state.go('signin', {});
 ```
 
 <img src="images/img-signin.png"/>
@@ -153,10 +158,14 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
+You can go in html
 ```html
 <md-button href="#/signup">Sign Up</md-button>
 ```
-
+or in js
+```javascript
+$state.go('signup', {});
+```
 
 <img src="images/img-signup.png"/>
 
@@ -209,8 +218,13 @@ Navigation to the **Post-signup** page can be done using **post_signup** state o
 
 ### Usage
 
+You can go in html
 ```html
 <md-button href="#/post_signup?party_id='id'">Post Sign Up</md-button>
+```
+or in js
+```javascript
+$state.go('post_signup', { party_id='id' })
 ```
 
 <img src="images/img-post-signup.png"/>
@@ -271,8 +285,13 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
+Yon can go in html
 ```html
 <md-button href="#/recover_password">Recover password</md-button>
+```
+or in js
+```javascript
+$state.go('recover_password', { server_url:'url', email:'email@email.com'})
 ```
 
 <img src="images/img-recover-password.png"/>
@@ -329,8 +348,13 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
+Yon can go in html
 ```html
 <md-button href="#/reset_password?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>
+```
+or in js
+```javascript
+$state.go('reset_password', { server_url:'url', email:'email@email.com', code:'123'})
 ```
 
 <img src="images/img-reset-password.png"/>
@@ -383,8 +407,13 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
+Yon can go in html
 ```html
 <md-button href="#/verify_email?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>
+```
+or in js
+```javascript
+$state.go('verify_email', { server_url:'url', email:'email@email.com', code='123'});
 ```
 
 <img src="images/img-email-verification.png"/>

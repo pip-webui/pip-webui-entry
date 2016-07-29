@@ -8,57 +8,58 @@ Pip.WebUI.Entry module supports user registration and entry process. It contains
 
 The module relies on the standard REST API for **users** and **sessions** implemented on the server.
 
-### Signin
+### Signin form
 
-Signin form provides fields to use authorization via user name/password. Within typing data into input fields it is validated
-in realtime. Also, user can change signin server.
-Checkbox `Remember` lets prolong login session even after some work breaking with service.
+**Signin** form allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter.
 
 <a href="doc/images/img-signin.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-signin.png"/>
 </a>
 
-### Signup
+### Signup form
 
-Signup form lets newcomer create an account for using provided service. Form has validated fields. Under each input fields
-are located errors notifications. Also, user can choose signup server.
+**Signup** form allows users to register their account in application. The form is intentionally made ultra-short to low the barrier to entry for new users. Additional information can be entered in optional **Post-signup** form.
 
 <a href="doc/images/img-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-signup.png"/>
 </a>
 
-### Post-signup
+### Post-signup form
 
-'Post signup' page is appears after success creating user account. The form includes controls which let point out basic
- information about user (brief description, birthday, avatar image) and choose application interface language.
+**Post signup** form can be opened right after signup to ask user to enter additional information: date of birth, avatar, location, pick preferred color theme.
 
 <a href="doc/images/img-post-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-post-signup.png"/>
 </a>
 
-### Password recovery
+### Password recovery form
 
-'Password recover' page allows user to recover forgotten password by sending email with instructions how to do. User
-can choose authorization server. Validation on input field is supported and if it necessary will notify user about error.
+**Password recover** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Password reset** form where he can enter received code and set a new password.
 
 <a href="doc/images/img-recover-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-recover-password.png"/>
 </a>
 
-### Email verification
+### Email verification form
 
-'Email verification' page allows user to change user's contact email established before. User point out control email
- where will be send verification code to insert the one into the second pane field. Input fields have validation notifications.
+**Email verification** form allows users to confirm their primary email addresses by entering verification code they shall receive via email right after registration. This form is usually opened using a link in the email with the code.
 
+Todo: Change screenshot to show entire screen
 <a href="doc/images/img-email-verification.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-email-verification.png"/>
 </a>
 
-### Changing password
+### Password reset form
 
-'Change password' page allows user to change user's account password. All input fields support validation and error notification
- under each one.
+**Password rest** form is opened right after **Password recovery**. It allows to enter a new password after providing a valid reset code.
 
+Todo: Add screenshot with password reset form
+
+### Change password form
+
+**Change password** is another form that allows user to change his password. In this case he must enter his old password to change it.
+
+Todo: Change screenshot to show entire screen
 <a href="doc/images/img-change-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-change-password.png"/>
 </a>

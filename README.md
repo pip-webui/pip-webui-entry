@@ -6,7 +6,9 @@ Most Line-of-Business applications tailor information to specific user. To do th
 It is also need to support registrations for new users, let them recover their passwords and so on.
 Pip.WebUI.Entry module supports user registration and entry process. It contains implementation of signin, signup, password recovery and email verification views implemented as pages, dialogs and panels.
 
-### Signin page
+The module relies on the standard REST API for **users** and **sessions** implemented on the server.
+
+### Signin
 
 Signin form provides fields to use authorization via user name/password. Within typing data into input fields it is validated
 in realtime. Also, user can change signin server.
@@ -16,7 +18,7 @@ Checkbox `Remember` lets prolong login session even after some work breaking wit
     <img src="doc/images/img-signin.png"/>
 </a>
 
-### Signup page
+### Signup
 
 Signup form lets newcomer create an account for using provided service. Form has validated fields. Under each input fields
 are located errors notifications. Also, user can choose signup server.
@@ -25,7 +27,7 @@ are located errors notifications. Also, user can choose signup server.
     <img src="doc/images/img-signup.png"/>
 </a>
 
-### Post-signup page
+### Post-signup
 
 'Post signup' page is appears after success creating user account. The form includes controls which let point out basic
  information about user (brief description, birthday, avatar image) and choose application interface language.
@@ -34,7 +36,7 @@ are located errors notifications. Also, user can choose signup server.
     <img src="doc/images/img-post-signup.png"/>
 </a>
 
-### Password recovery page
+### Password recovery
 
 'Password recover' page allows user to recover forgotten password by sending email with instructions how to do. User
 can choose authorization server. Validation on input field is supported and if it necessary will notify user about error.
@@ -43,7 +45,7 @@ can choose authorization server. Validation on input field is supported and if i
     <img src="doc/images/img-recover-password.png"/>
 </a>
 
-### Email verification page
+### Email verification
 
 'Email verification' page allows user to change user's contact email established before. User point out control email
  where will be send verification code to insert the one into the second pane field. Input fields have validation notifications.
@@ -52,7 +54,7 @@ can choose authorization server. Validation on input field is supported and if i
     <img src="doc/images/img-email-verification.png"/>
 </a>
 
-### Change password
+### Changing password
 
 'Change password' page allows user to change user's account password. All input fields support validation and error notification
  under each one.
@@ -70,8 +72,8 @@ Todo: Add code snippet to demonstrate how to configure entry pages
 ## Learn more about the module
 
 - [User's guide](doc/UsersGuide.md)
-- [Online samples](http://webui.pipdevs.com/pip-webui-settings/index.html)
-- [API reference](http://webui-api.pipdevs.com/pip-webui-settings/index.html)
+- [Online samples](http://webui.pipdevs.com/pip-webui-entry/index.html)
+- [API reference](http://webui-api.pipdevs.com/pip-webui-entry/index.html)
 - [Developer's guide](doc/DevelopersGuide.md)
 - [Changelog](CHANGELOG.md)
 - [Pip.WebUI project website](http://www.pipwebui.org)
@@ -93,5 +95,3 @@ Todo: Add code snippet to demonstrate how to configure entry pages
 ## <a name="license"></a>License
 
 This module is released under [MIT license](License) and totally free for commercial and non-commercial use.
-
-

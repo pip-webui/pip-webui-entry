@@ -113,11 +113,18 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **pip-signin-panel** provides the same signin form as **Signin** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-Todo: Add HTML snippet that demonstrates directive with attributes
+
+```html
+<pip-signin-panel pip-goto-signup-dialog="pipGotoSignupDialog"
+                  pip-goto-recover-password-dialog="pipGotoRecoverPasswordDialog">
+</pip-signin-panel>
+```
 
 ### Attributes
-Todo: List the directive attributes
 
+* **pip-goto-signup-page** - function for routing on sign up page 
+* **pip-goto-signup-dialog** - function for routing on sign up dialog
+* **pip-goto-recover-password-dialog** -  function for routing on recover password dialog
 
 ## <a name="signup_page"></a> Signup page
 
@@ -157,11 +164,18 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **pip-signup-panel** provides the same signup form as **Signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-Todo: Add HTML snippet that demonstrates directive with attributes
+
+```html
+<pip-signup-panel pip-goto-signin-dialog="pipGotoSigninDialog"
+                  pip-post-signup="pipPostSignup">
+</pip-signup-panel>
+```
 
 ### Attributes
-Todo: List the directive attributes
 
+* **pip-post-signup** - function for routing on post sign up state
+* **pip-goto-signin-page** - function for routing on sign in page
+* **pip-goto-signin-dialog** -  function for routing on sign in dialog
 
 ## <a name="post_signup_page"></a> Post-signup page
 
@@ -199,7 +213,13 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **pip-post-signup-panel** provides the same pos-signup form as **Post-signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-Todo: Add HTML snippet that demonstrates directive with attributes
+
+```html
+<pip-post-signup-panel pip-data="data"
+                       pip-created="$panel = $control"
+                       pip-party="$party">
+</pip-post-signup-panel>
+```
 
 ### Attributes
 Todo: List the directive attributes
@@ -243,7 +263,13 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **pip-recover-password-panel** provides the same recover password form as **Recover password** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-Todo: Add HTML snippet that demonstrates directive with attributes
+
+```html
+<pip-recover-password-panel pip-data="data"
+                pip-created="$panel = $control"
+                pip-goto-reset="pipGotoReset">
+</pip-recover-password-panel>
+```
 
 ### Attributes
 Todo: List the directive attributes
@@ -287,7 +313,11 @@ Todo: Add code snippet to demonstrate how to call the dialog
 **pip-reset-password-panel** provides the same reset password form as **Reset password** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
-Todo: Add HTML snippet that demonstrates directive with attributes
+```html
+<pip-reset-password-panel pip-data="data"
+                          pip-created="$panel = $control">
+</pip-reset-password-panel>
+```
 
 ### Attributes
 Todo: List the directive attributes

@@ -75,77 +75,46 @@ Todo: Add code snippet to demonstrate how to configure entry page
     + newUrl - the fixed server url to be set. **null** makes no changes
   - Returns: the currently selected fixed server url
   
-## <a name="settings_page"></a> Settings page
+## <a name="signin_page"></a> Signin page
 
-**Settings** page is implemented as extensible container that can be dynamically filled with tabs.
-On smaller screens the tabs transform into dropdown menu.
+**Signin** form allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter. It depends on **signin** operation in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
 
-Navigation to the **Settings** page can be done using **settings** state or **/settings** route. 
-Child state specifies the tab that shall be activated. If child set is not set, it opens the default tab
-configured in **pipSettings** provider.
+Navigation to the **Signin** page can be done using **signin** state or **#/signin** route. It takes an optional parameter to redirect after successful signin.
 
-### Usage
-
-```javascript
-pipSideNavProvider.sections([{
-    links: [
-        {title: 'Settings', url: '/settings'}
-    ]
-}]);
-```
-
-## <a name="basic_info_tab"></a> Basic Info tab
-
-**Basic Info** tab allows to set account settings and change user preferences such as language or theme. It also lets user 
-to change his password or verify primary email using verification code sent via email message.
-
-The tab requires users REST API to be implemented on the server.
-List specific REST operations required for this tab:
-* **pipRest.parties().update** - function for updating parties collections with the use PUT method
-* **pipRest.users().update** - function for updating users collections with the use PUT method
-* **pipRest.requestEmailVerification().get** - function for email verification
-* **pipRest.verifyEmail().call** - function for email verification
-
-[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
+Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider. **adminOnly** setting in **pipEntry** allows to restrict signins only to users with admin roles. It also hides links to signup since new users do not get admin privileges by default.
 
 ### Usage
 
-To add **Basic Info** tab into **Settings** page just register **pipUserSettings.BasicInfo** in angular module dependencies.
-If you add **pipUserSettings** module it will register all user settings tabs.
-```javascript
-angular.module('myApp', [..., 'pipUserSettings.BasicInfo'])
-```
+Todo: Add code snippet to demonstrate navigation to this page
 
-<img src="images/img-settings-basic-info.png"/>
-
-See online sample [here...](http://webui.pipdevs.com/pip-webui-settings/index.html#/settings/basic_info)
+<img src="images/img-signin.png"/>
 
 
-## <a name="sessions_tab"></a> Active Sessions tab
+## <a name="signin_dialog"></a> pipSigninDialog
 
-**Active Sessions** tab show active sessions open by the user. It also allows to close specific session or all of them
-except the current one.
-
-The tab requires sessions REST API to be implemented on the server.
-List specific REST operations required for this tab:
-* **pipRest.userSessions().remove** - function for remove some session
-* **pipRest.userSessions().query** - function for return sessions collections
-* **pipRest.sessionId()** - function for return id active session
-
-[Go to Pip.WebUI.Rest Users's Guide](https://github.com/pip-webui/pip-webui-rest/blob/master/doc/UsersGuide.md)
-
+**pipSigninDialog** provides the same signin form as **Signin** page, but it shows it as a dialog. 
 
 ### Usage
+Todo: Add code snippet to demonstrate how to call the dialog
 
-To add **Active Sessions** tab into **Settings** page just register **pipUserSettings.Sessions** in angular module dependencies.
-If you add **pipUserSettings** module it will register all user settings tabs.
-```javascript
-angular.module('myApp', [..., 'pipUserSettings.Sessions'])
-```
+### Methods
+* **show(params: any, successCallback, cancelCallback): void** - shows the dialog
+  - Params:
+    + params - dialog parameters
+    + successCallback - callback function that is called when user is successfuly authenticated
+    + cancelCallback - callback function that is called when user cancels the dialog
 
-<img src="images/img-settings-active-sessions.png"/>
 
-See online sample [here...](http://webui.pipdevs.com/pip-webui-settings/index.html#/settings/sessions)
+## <a name="signin_panel"></a> pip-signin-panel
+
+**pip-signin-panel** provides the same signin form as **Signin** page, but it shows it as a panel, that can be placed on any custom form.
+
+### Usage
+Todo: Add HTML snippet that demonstrates directive with attributes
+
+### Attributes
+Todo: List the directive attributes
 
 
 ## <a name="issues"></a> Questions and bugs

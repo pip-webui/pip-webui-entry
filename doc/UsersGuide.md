@@ -77,7 +77,9 @@ Todo: Add code snippet to demonstrate how to configure entry page
   
 ## <a name="signin_page"></a> Signin page
 
-**Signin** form allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter. It depends on **signin** operation in REST API.
+**Signin** page allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter. 
+
+The form depends on **signin** operation in REST API.
 Todo: Add reference to pip-webui-rest to the protocol definition
 
 Navigation to the **Signin** page can be done using **signin** state or **#/signin** route. It takes an optional parameter to redirect after successful signin.
@@ -109,6 +111,92 @@ Todo: Add code snippet to demonstrate how to call the dialog
 ## <a name="signin_panel"></a> pip-signin-panel
 
 **pip-signin-panel** provides the same signin form as **Signin** page, but it shows it as a panel, that can be placed on any custom form.
+
+### Usage
+Todo: Add HTML snippet that demonstrates directive with attributes
+
+### Attributes
+Todo: List the directive attributes
+
+
+## <a name="signup_page"></a> Signup page
+
+**Signup** form allows users to register their account in application. The form is intentionally made ultra-short to low the barrier to entry for new users. Additional information can be entered in optional **Post-signup** form.
+
+The form depends on **signup** operation in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
+
+Navigation to the **Signup** page can be done using **signup** state or **#/signup** route. It takes an optional parameter to redirect after successful signup.
+
+Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
+
+### Usage
+
+Todo: Add code snippet to demonstrate navigation to this page
+
+<img src="images/img-signup.png"/>
+
+
+## <a name="signup_dialog"></a> pipSignupDialog
+
+**pipSignupDialog** provides the same signup form as **Signup** page, but it shows it as a dialog. 
+
+### Usage
+Todo: Add code snippet to demonstrate how to call the dialog
+
+### Methods
+* **show(params: any, successCallback, cancelCallback): void** - shows the dialog
+  - Params:
+    + params - dialog parameters
+    + successCallback - callback function that is called when user is successfuly registered
+    + cancelCallback - callback function that is called when user cancels the dialog
+
+
+## <a name="signup_panel"></a> pip-signup-panel
+
+**pip-signup-panel** provides the same signup form as **Signup** page, but it shows it as a panel, that can be placed on any custom form.
+
+### Usage
+Todo: Add HTML snippet that demonstrates directive with attributes
+
+### Attributes
+Todo: List the directive attributes
+
+
+## <a name="post_signup_page"></a> Post-signup page
+
+**Post signup** form can be opened right after signup to ask user to enter additional information: date of birth, avatar, location, pick preferred color theme.
+
+The form depends on **users** and **files** operations in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
+
+Navigation to the **Post-signup** page can be done using **post_signup** state or **#/post_signup** route. It takes an optional parameter to redirect after successful signup.
+
+### Usage
+
+Todo: Add code snippet to demonstrate navigation to this page
+
+<img src="images/img-post-signup.png"/>
+
+
+## <a name="post_signup_dialog"></a> pipPostSignupDialog
+
+**pipPostSignupDialog** provides the same post-signup form as **Post-signup** page, but it shows it as a dialog. 
+
+### Usage
+Todo: Add code snippet to demonstrate how to call the dialog
+
+### Methods
+* **show(params: any, successCallback, cancelCallback): void** - shows the dialog
+  - Params:
+    + params - dialog parameters
+    + successCallback - callback function that is called when post signup was successfully completed
+    + cancelCallback - callback function that is called when user skips the dialog
+
+
+## <a name="post_signup_panel"></a> pip-pos-signup-panel
+
+**pip-pos-signup-panel** provides the same pos-signup form as **Post-signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
 Todo: Add HTML snippet that demonstrates directive with attributes

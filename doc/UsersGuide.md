@@ -196,7 +196,7 @@ Todo: Add code snippet to demonstrate how to call the dialog
 
 ## <a name="post_signup_panel"></a> pip-pos-signup-panel
 
-**pip-pos-signup-panel** provides the same pos-signup form as **Post-signup** page, but it shows it as a panel, that can be placed on any custom form.
+**pip-post-signup-panel** provides the same pos-signup form as **Post-signup** page, but it shows it as a panel, that can be placed on any custom form.
 
 ### Usage
 Todo: Add HTML snippet that demonstrates directive with attributes
@@ -291,6 +291,24 @@ Todo: Add HTML snippet that demonstrates directive with attributes
 
 ### Attributes
 Todo: List the directive attributes
+
+
+## <a name="verify_email_page"></a>Verify email page
+
+**Verify email** form allows users to confirm their primary email addresses by entering verification code they shall receive via email right after registration. This form is usually opened using a link in the email with the code. For that reason it doesn't come as dialogs or panels (shall we add that?). After successful verification it switches to **Verify success** form. Form their user can continue using the application.
+
+The form depends on **verify_email** operation in REST API.
+Todo: Add reference to pip-webui-rest to the protocol definition
+
+Navigation to the **Verify email** page can be done using **verify** state or **#/reset_password** route. 
+
+Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
+
+### Usage
+
+Todo: Add code snippet to demonstrate navigation to this page
+
+<img src="images/img-email-verification.png"/>
 
 
 ## <a name="issues"></a> Questions and bugs

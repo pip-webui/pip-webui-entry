@@ -335,7 +335,6 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 <img src="images/img-reset-password.png"/>
 
-
 ## <a name="reset_password_dialog"></a> pipResetPasswordDialog
 
 **pipResetPasswordDialog** provides the same reset password form as **Reset password** page, but it shows it as a dialog. 

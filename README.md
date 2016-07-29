@@ -34,7 +34,7 @@ The module relies on the standard REST API for **users** and **sessions** implem
 
 ### Password recovery form
 
-**Password recover** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Password reset** form where he can enter received code and set a new password.
+**Password recovery** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Password reset** form where he can enter received code and set a new password.
 
 <a href="doc/images/img-recover-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-recover-password.png"/>
@@ -51,7 +51,7 @@ Todo: Change screenshot to show entire screen
 
 ### Password reset form
 
-**Password rest** form is opened right after **Password recovery**. It allows to enter a new password after providing a valid reset code.
+**Password reset** form is opened right after **Password recovery**. It allows to enter a new password after providing a valid reset code.
 
 Todo: Add screenshot with password reset form
 

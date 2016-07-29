@@ -61,7 +61,8 @@ angular.module('myApp',[..., 'pipEntry']);
 **pipEntry** provider allows to configure behavior and look in entry pages during configure phase.
 
 ### Usage
-Todo: Add code snippet to demonstrate how to configure entry page
+Todo: Add code snippet to demonstrate how to configure entry page 
+(сейчас так все реализовано что не нужно настраивать EntryProvider)
 
 ```javascript
 pipRestProvider.serverUrl('http://alpha.pipservices.net');
@@ -107,7 +108,11 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 **pipSigninDialog** provides the same signin form as **Signin** page, but it shows it as a dialog. 
 
 ### Usage
-Todo: Add code snippet to demonstrate how to call the dialog
+```javascript
+thisModule.controller('customController', function (pipSigninDialog) {
+    pipSigninDialog.show({});
+)}
+```
 
 ### Methods
 * **show(params: any, successCallback, cancelCallback): void** - shows the dialog
@@ -161,7 +166,11 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 **pipSignupDialog** provides the same signup form as **Signup** page, but it shows it as a dialog. 
 
 ### Usage
-Todo: Add code snippet to demonstrate how to call the dialog
+```javascript
+thisModule.controller('customController', function (pipSignupDialog) {
+    pipSignupDialog.show({});
+)}
+```
 
 ### Methods
 * **show(params: any, successCallback, cancelCallback): void** - shows the dialog
@@ -212,7 +221,15 @@ Navigation to the **Post-signup** page can be done using **post_signup** state o
 **pipPostSignupDialog** provides the same post-signup form as **Post-signup** page, but it shows it as a dialog. 
 
 ### Usage
-Todo: Add code snippet to demonstrate how to call the dialog
+```javascript
+thisModule.controller('customController', function (pipPostSignupDialog) {
+   function pipPostSignup(user){
+       pipPostSignupDialog.show({ 
+            $party:user
+       });
+   }
+)}
+```
 
 ### Methods
 * **show(params: any, successCallback, cancelCallback): void** - shows the dialog
@@ -236,7 +253,9 @@ Todo: Add code snippet to demonstrate how to call the dialog
 ```
 
 ### Attributes
-Todo: List the directive attributes
+* **pip-data** - object for updating
+* **pip-created** - object with onPostSignupSubmit function
+* **pip-party** - party object
 
 
 ## <a name="recover_password_page"></a> Recover password page
@@ -252,7 +271,9 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```html
+<md-button href="#/recover_password">Recover password</md-button>
+```
 
 <img src="images/img-recover-password.png"/>
 
@@ -262,7 +283,11 @@ Todo: Add code snippet to demonstrate navigation to this page
 **pipRecoverPasswordDialog** provides the same recover password form as **Recover password** page, but it shows it as a dialog. 
 
 ### Usage
-Todo: Add code snippet to demonstrate how to call the dialog
+```javascript
+thisModule.controller('customController', function (pipRecoverPasswordDialog) {
+   pipRecoverPasswordDialog.show({});
+)}
+```
 
 ### Methods
 * **show(params: any, successCallback, cancelCallback): void** - shows the dialog
@@ -304,7 +329,9 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```html
+<md-button href="#/reset_password?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>
+```
 
 <img src="images/img-reset-password.png"/>
 
@@ -314,7 +341,11 @@ Todo: Add code snippet to demonstrate navigation to this page
 **pipResetPasswordDialog** provides the same reset password form as **Reset password** page, but it shows it as a dialog. 
 
 ### Usage
-Todo: Add code snippet to demonstrate how to call the dialog
+```javascript
+thisModule.controller('customController', function (pipResetPasswordDialog) {
+   pipResetPasswordDialog.show({});
+)}
+```
 
 ### Methods
 * **show(params: any, successCallback, cancelCallback): void** - shows the dialog
@@ -353,7 +384,9 @@ Server URL can be hidden by setting **fixedServerUrl** in **pipEntry** provider.
 
 ### Usage
 
-Todo: Add code snippet to demonstrate navigation to this page
+```html
+<md-button href="#/verify_email?server_url='url'&email='email@email.com'&code='123'">Reset password</md-button>
+```
 
 <img src="images/img-email-verification.png"/>
 

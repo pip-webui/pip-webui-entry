@@ -46,9 +46,10 @@ npm install pip-webui
 Include **pip-webui** files into your web application.
 ```html
 <link rel="stylesheet" href=".../pip-webui-lib.min.css"/>
+<link rel="stylesheet" href=".../pip-webui.min.css"/>
 ...
 <script src=".../pip-webui-lib.min.js"></script>
-<script src=".../pip-webui-test.min.js"></script>
+<script src=".../pip-webui.min.js"></script>
 ```
 
 Register **pipEntry** module in angular module dependencies.

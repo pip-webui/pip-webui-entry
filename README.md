@@ -53,7 +53,9 @@ Todo: Change screenshot to show entire screen
 
 **Password reset** form is opened right after **Password recovery**. It allows to enter a new password after providing a valid reset code.
 
-Todo: Add screenshot with password reset form
+<a href="doc/images/img-reset-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="images/img-reset-password.png"/>
+</a>
 
 ### Change password form
 

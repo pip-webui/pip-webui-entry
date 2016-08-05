@@ -61,7 +61,6 @@ Todo: Change screenshot to show entire screen
 
 **Change password** is another form that allows user to change his password. In this case he must enter his old password to change it.
 
-Todo: Change screenshot to show entire screen
 <a href="doc/images/img-change-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-change-password.png"/>
 </a>

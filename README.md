@@ -44,7 +44,6 @@ The module relies on the standard REST API for **users** and **sessions** implem
 
 **Email verification** form allows users to confirm their primary email addresses by entering verification code they shall receive via email right after registration. This form is usually opened using a link in the email with the code.
 
-Todo: Change screenshot to show entire screen
 <a href="doc/images/img-email-verification.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
     <img src="doc/images/img-email-verification.png"/>
 </a>

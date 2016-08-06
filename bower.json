@@ -1,36 +1,36 @@
 {
-  "name": "pip-webui-entry",
-  "version": "1.0.0",
-  "description": "User entry pages for Pip.WebUI",
-  "main": "",
-  "authors": [
-      {
-          "name": "Sergey Seroukhov",
-          "email": "seroukhov@gmail.com"
-      },
-      {
-          "name": "Katerina Negrienko",
-          "email": "katya@negrienko.com"
-      }
-  ],
-  "license": "MIT",
-  "keywords": [
-    "pip",
-    "webui",
-    "entry"
-  ],
-  "homepage": "https://github.com/pip-webui/pip-webui-entry",
-  "ignore": [
-    ".gitignore",
-    "cordova",
-    "node_modules",
-    "bower_components",
-    "src",
-    "tests",
-    "samples",
-    "scripts",
-    "build.*",
-    "gulpfile.js",
-    "karma.conf.js"
-  ]
+    "name": "pip-webui-entry",
+    "version": "1.0.0",
+    "description": "User entry pages for Pip.WebUI",
+    "main": "",
+    "authors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        },
+        {
+            "name": "Katerina Negrienko",
+            "email": "katya@negrienko.com"
+        }
+    ],
+    "license": "MIT",
+    "keywords": [
+        "pip",
+        "webui",
+        "entry"
+    ],
+    "homepage": "https://github.com/pip-webui/pip-webui-entry",
+    "ignore": [
+        ".gitignore",
+        "cordova",
+        "node_modules",
+        "bower_components",
+        "src",
+        "tests",
+        "samples",
+        "scripts",
+        "build.*",
+        "gulpfile.js",
+        "karma.conf.js"
+    ]
 }

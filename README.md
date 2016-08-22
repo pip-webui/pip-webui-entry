@@ -4,64 +4,67 @@
 
 Most Line-of-Business applications tailor information to specific user. To do that, they have to identify who the user is.
 It is also need to support registrations for new users, let them recover their passwords and so on.
-Pip.WebUI.Entry module supports user registration and entry process. It contains implementation of signin, signup, password recovery and email verification views implemented as pages, dialogs and panels.
+Pip.WebUI.Entry module supports user registration and entry process. It contains implementation of signin, signup, password recovery and email 
+verification views implemented as pages, dialogs and panels.
 
 The module relies on the standard REST API for **users** and **sessions** implemented on the server.
 
 ### Signin form
 
-**Signin** form allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, Facebook or Twitter.
+**Signin** form allows to authenticate user using login and password. In the future we are going to add authentication with OAuth2 using popular providers like Google, 
+Facebook or Twitter.
 
-<a href="doc/images/img-signin.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-signin.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-signin.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-signin.png"/>
 </a>
 
 ### Signup form
 
-**Signup** form allows users to register their account in application. The form is intentionally made ultra-short to low the barrier to entry for new users. Additional information can be entered in optional **Post-signup** form.
+**Signup** form allows users to register their account in application. The form is intentionally made ultra-short to low the barrier to entry for new users. 
+Additional information can be entered in optional **Post-signup** form.
 
-<a href="doc/images/img-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-signup.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-signup.png"/>
 </a>
 
 ### Post-signup form
 
 **Post signup** form can be opened right after signup to ask user to enter additional information: date of birth, avatar, location, pick preferred color theme.
 
-<a href="doc/images/img-post-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-post-signup.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-post-signup.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-post-signup.png"/>
 </a>
 
 ### Password recovery form
 
 **Password recovery** form lets users to recover their forgotten passwords by sending email with reset instructions. After submit, user is transfered to "Password reset** form where he can enter received code and set a new password.
 
-<a href="doc/images/img-recover-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-recover-password.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-recover-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-recover-password.png"/>
 </a>
 
 ### Email verification form
 
 **Email verification** form allows users to confirm their primary email addresses by entering verification code they shall receive via email right after registration. This form is usually opened using a link in the email with the code.
 
-<a href="doc/images/img-email-verification.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-email-verification.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-email-verification.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-email-verification.png"/>
 </a>
 
 ### Password reset form
 
 **Password reset** form is opened right after **Password recovery**. It allows to enter a new password after providing a valid reset code.
 
-<a href="doc/images/img-reset-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-reset-password.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-reset-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-reset-password.png"/>
 </a>
 
 ### Change password form
 
 **Change password** is another form that allows user to change his password. In this case he must enter his old password to change it.
 
-<a href="doc/images/img-change-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
-    <img src="doc/images/img-change-password.png"/>
+<a href="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-change-password.png" style="border: 3px ridge #c8d2df; width: 50%; margin: auto; display: block">
+    <img src="https://github.com/pip-webui/pip-webui-entry/raw/master/doc/images/img-change-password.png"/>
 </a>
 
 ### pipEntry provider
@@ -72,11 +75,11 @@ Todo: Add code snippet to demonstrate how to configure entry pages
 
 ## Learn more about the module
 
-- [User's guide](doc/UsersGuide.md)
+- [User's guide](https://github.com/pip-webui/pip-webui-entry/blob/master/doc/UsersGuide.md)
 - [Online samples](http://webui.pipdevs.com/pip-webui-entry/index.html)
 - [API reference](http://webui-api.pipdevs.com/pip-webui-entry/index.html)
-- [Developer's guide](doc/DevelopersGuide.md)
-- [Changelog](CHANGELOG.md)
+- [Developer's guide](https://github.com/pip-webui/pip-webui-entry/blob/master/doc/DevelopersGuide.md)
+- [Changelog](https://github.com/pip-webui/pip-webui-entry/blob/master/CHANGELOG.md)
 - [Pip.WebUI project website](http://www.pipwebui.org)
 - [Pip.WebUI project wiki](https://github.com/pip-webui/pip-webui/wiki)
 - [Pip.WebUI discussion forum](https://groups.google.com/forum/#!forum/pip-webui)

@@ -3,7 +3,7 @@
         <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top">
         </md-progress-linear>
 
-        <h2 pip-translate="SIGNIN_TITLE"></h2>
+        <h2 pip-translate="SIGNIN_TITLE" ng-if="!hideObject.title"></h2>
 
         <form name="form" novalidate>
             <div ng-messages="form.$serverError" class="text-error bm8 color-error"  md-auto-hide="false">
@@ -17,14 +17,14 @@
                 </div>
             </div>
 
-            <a ng-hide="showServerUrl || fixedServerUrl"
+            <a ng-hide="showServerUrl || fixedServerUrl || hideObject.server"
                ng-click="showServerUrl = true" href=""
                id="link-server-url"
                pip-test="link-server-url">
                 {{::'ENTRY_CHANGE_SERVER' | translate}}
             </a>
 
-            <div ng-show="showServerUrl">
+            <div ng-show="showServerUrl && !hideObject.server">
                 <md-autocomplete
                         ng-initial autofocus tabindex="1"
                         class="pip-combobox w-stretch bm8"
@@ -83,11 +83,15 @@
                 </div>
             </md-input-container>
             <a href="" class="display bm16"
+               ng-if="!hideObject.forgotPassword"
                ng-click="gotoRecoverPassword()"
                tabindex="4">
-                {{::'SIGNIN_FORGOT_PASSWORD' | translate}}</a>
+                {{::'SIGNIN_FORGOT_PASSWORD' | translate}}
+            </a>
 
-            <md-checkbox ng-disabled="transaction.busy()" md-no-ink class="lm0"
+            <md-checkbox ng-disabled="transaction.busy()" 
+                         ng-if="!hideObject.forgotPassword"
+                         md-no-ink class="lm0"
                          aria-label="{{'SIGNIN_REMEMBER' | translate}}" tabindex="5"
                          ng-model="data.remember"
                          pip-test-checkbox="remember">
@@ -108,7 +112,7 @@
                     {{::'CANCEL' | translate}}
                 </md-button>
             </div>
-            <div class="tm24 layout-row" ng-if="!adminOnly && $mdMedia('gt-xs')">
+            <div class="tm24 layout-row" ng-if="!adminOnly && $mdMedia('gt-xs') && !hideObject.signup">
                 <p class="m0 text-small"> <!--  <p class="a-question-text">  -->
                     {{::'SIGNIN_NOT_MEMBER' | translate}}
                     <a href=""
@@ -119,8 +123,8 @@
                 </p>
             </div>
 
-            <div class="tm24 divider-top text-signup"
-                 ng-if="!adminOnly && $mdMedia('xs')">
+            <div class="tm24 divider-top text-signup" 
+                 ng-if="!adminOnly && $mdMedia('xs') && !hideObject.signup">
                 <div class="h48 layout-row layout-align-center-end">
                     <p class="m0 text-small">{{::'SIGNIN_NOT_MEMBER' | translate}}</p>
                 </div>

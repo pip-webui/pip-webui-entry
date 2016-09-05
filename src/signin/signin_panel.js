@@ -18,7 +18,9 @@
                 scope: {
                     gotoSignupPage: '=pipGotoSignupPage',
                     gotoSignupDialog: '=pipGotoSignupDialog',
-                    gotoRecoverPasswordDialog:'=pipGotoRecoverPasswordDialog'
+                    gotoRecoverPasswordDialog:'=pipGotoRecoverPasswordDialog',
+                    rememberDefault: '=pipremember', // set remember check
+                    hideElements: '=pipHideElements' // {remember, title, server, forgotPassword, signup}
                 },
                 templateUrl: 'signin/signin_panel.html',
                 controller: 'pipSigninPanelController'
@@ -32,7 +34,9 @@
 
             $scope.$mdMedia = $mdMedia;
 
-
+            setHElementVisability();
+console.log('hideElements', $scope.hideElements);
+console.log('hideElements', $scope.hideObject);
             $scope.showServerError = true;
             $scope.transaction = pipTransaction('entry.signin', $scope);
 
@@ -46,6 +50,17 @@
             pipEntryCommon.initScope($scope);
 
             return;
+
+            function setHElementVisability() {
+                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
+                $scope.hideObject.remember = pipUtils.toBoolean($scope.hideObject.remember) == true;
+                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
+                $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
+                $scope.hideObject.forgotPassword = pipUtils.toBoolean($scope.hideObject.forgotPassword) == true;
+                $scope.hideObject.signup = pipUtils.toBoolean($scope.hideObject.signup) == true;
+            }
+
+            
 
             function gotoSignup(){
                 if(!$scope.gotoSignupPage &&  !$scope.gotoSignupDialog){

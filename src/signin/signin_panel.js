@@ -19,7 +19,7 @@
                     gotoSignupPage: '=pipGotoSignupPage',
                     gotoSignupDialog: '=pipGotoSignupDialog',
                     gotoRecoverPasswordDialog:'=pipGotoRecoverPasswordDialog',
-                    rememberDefault: '=pipremember', // set remember check
+                    rememberDefault: '=pipRemember', // set remember check
                     hideElements: '=pipHideElements' // {remember, title, server, forgotPassword, signup}
                 },
                 templateUrl: 'signin/signin_panel.html',
@@ -35,8 +35,7 @@
             $scope.$mdMedia = $mdMedia;
 
             setHElementVisability();
-console.log('hideElements', $scope.hideElements);
-console.log('hideElements', $scope.hideObject);
+
             $scope.showServerError = true;
             $scope.transaction = pipTransaction('entry.signin', $scope);
 
@@ -99,6 +98,11 @@ console.log('hideElements', $scope.hideObject);
                 if (!transactionId) return;
 
                 $rootScope.isSignin = true;
+                
+                if ($scope.hideObject.remember && !!$scope.rememberDefault) {
+                    $scope.data.remember = true;
+                }
+
                 pipSession.signin($scope.data,
                     function (user) {
                         pipFormErrors.resetFormErrors($scope.form, false);

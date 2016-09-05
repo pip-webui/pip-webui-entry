@@ -817,6 +817,152 @@ try {
   module = angular.module('pipEntry.Templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('verify_email/verify_email.html',
+    '<!--\n' +
+    '@file Verify email page\n' +
+    '@copyright Digital Living Software Corp. 2014-2016\n' +
+    '-->\n' +
+    '\n' +
+    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
+    '    <pip-card width="400">\n' +
+    '        <div class="pip-body">\n' +
+    '            <div class="pip-content">\n' +
+    '                <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top" >\n' +
+    '                </md-progress-linear>\n' +
+    '\n' +
+    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
+    '\n' +
+    '                <p class="title-padding">{{\'VERIFY_EMAIL_TEXT_1\' | translate}} </p>\n' +
+    '\n' +
+    '                <form name=\'form\' novalidate>\n' +
+    '                    <div ng-messages="form.$serverError" class="text-error bm8">\n' +
+    '                        <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_UNKNOWN">\n' +
+    '                            {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                    <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">      \n' +
+    '                        {{\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
+    '                    </a>\n' +
+    '                    <div ng-show="showServerUrl">\n' +
+    '                        <md-autocomplete\n' +
+    '                                ng-initial autofocus tabindex="1"\n' +
+    '                                class="pip-combobox w-stretch bm8"\n' +
+    '                                name="server"\n' +
+    '                                ng-enabled="!transaction.busy()"\n' +
+    '                                placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
+    '                                md-no-cache="true"\n' +
+    '                                md-selected-item="data.serverUrl"\n' +
+    '                                md-search-text="selected.searchURLs"\n' +
+    '                                md-items="item in getMatches()"\n' +
+    '                                md-item-text="item"\n' +
+    '                                md-selected-item-change="onServerUrlChanged()"\n' +
+    '                                md-delay="200"\n' +
+    '                                ng-model="data.serverUrl"\n' +
+    '                                pip-clear-errors>\n' +
+    '                            <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
+    '                        </md-autocomplete>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                    <md-input-container class="pip-no-hint" style="padding-bottom: 4px!important;">\n' +
+    '                        <label>{{::\'EMAIL\' | translate}}</label>\n' +
+    '                        <input name="email" type="email" ng-model="data.email" required step="any"  pip-clear-errors\n' +
+    '                               ng-disabled="transaction.busy()" tabindex="2" />\n' +
+    '\n' +
+    '                        <div ng-messages="touchedErrorsWithHint(form, form.email)" ng-if="!form.email.$pristine" class="md-input-error">\n' +
+    '                            <div ng-message="hint" class="pip-input-hint">{{::\'HINT_EMAIL\' | translate}}</div>\n' +
+    '                            <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1104">{{::\'ERROR_1104\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1305">{{::\'ERROR_1305\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
+    '                        </div>\n' +
+    '                    </md-input-container>\n' +
+    '\n' +
+    '                    <md-input-container class="pip-no-hint">\n' +
+    '                        <label>{{::\'ENTRY_RESET_CODE\' | translate}}</label>\n' +
+    '                        <input name="code" ng-disabled="transaction.busy()"\n' +
+    '                               ng-model="data.code" required tabindex="3" />\n' +
+    '\n' +
+    '                        <div ng-messages="touchedErrorsWithHint(form, form.code)" ng-if="!form.fullName.$pristine" class="md-input-error">\n' +
+    '                            <div ng-message="hint" class="pip-input-hint">{{::\'ENTRY_RESET_CODE\' | translate}}</div>\n' +
+    '                            <div ng-message="required">{{::\'ERROR_CODE_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="ERROR_1108">{{::\'ERROR_1108\' | translate}}</div>\n' +
+    '                        </div>\n' +
+    '                    </md-input-container>\n' +
+    '\n' +
+    '                    <p> \n' +
+    '                        {{\'VERIFY_EMAIL_TEXT_21\' | translate}} \n' +
+    '                        <a ng-click="onRecover()" class="pointer" href="">{{\'VERIFY_EMAIL_RESEND\' | translate}}</a>\n' +
+    '                        {{\'VERIFY_EMAIL_TEXT_22\' | translate}} \n' +
+    '                    </p>\n' +
+    '                </form>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '        <div class="pip-footer">\n' +
+    '            <md-button ng-click="goBack()" ng-hide="transaction.busy()" class="rm8" aria-label="CANCEL">\n' +
+    '                {{::\'CANCEL\' | translate}}\n' +
+    '            </md-button>\n' +
+    '            <md-button class="md-accent" ng-click="onVerify()" ng-hide="transaction.busy()" aria-label="VERIFY"\n' +
+    '                ng-disabled="data.code.length == 0 || data.email.length == 0 || (!data.email && form.$pristine) || (!data.code)">\n' +
+    '                {{::\'VERIFY\' | translate}}\n' +
+    '            </md-button>\n' +
+    '            <md-button class="md-warn " ng-show="transaction.busy()" ng-click="transaction.abort()" aria-label="ABORT">\n' +
+    '                {{::\'CANCEL\' | translate}}\n' +
+    '            </md-button>\n' +
+    '        </div>\n' +
+    '    </pip-card>\n' +
+    '</div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('pipEntry.Templates');
+} catch (e) {
+  module = angular.module('pipEntry.Templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('verify_email/verify_email_success.html',
+    '<!--\n' +
+    '@file Email verification success page\n' +
+    '@copyright Digital Living Software Corp. 2014-2016\n' +
+    '-->\n' +
+    '\n' +
+    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
+    '    <pip-card width="400">\n' +
+    '        <div class="pip-footer">\n' +
+    '            <md-button ng-click="onContinue()" class="md-accent">\n' +
+    '                {{\'CONTINUE\' | translate}} \n' +
+    '            </md-button>\n' +
+    '        </div>\n' +
+    '        <div class="pip-body">\n' +
+    '            <div class="pip-content">\n' +
+    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
+    '\n' +
+    '                <p class="title-padding">\n' +
+    '                    {{\'VERIFY_EMAIL_SUCCESS_TEXT\' | translate}} \n' +
+    '                </p>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '    </pip-card>\n' +
+    '</div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('pipEntry.Templates');
+} catch (e) {
+  module = angular.module('pipEntry.Templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('signup/signup.html',
     '<!--\n' +
     '@file Signup page\n' +
@@ -825,7 +971,7 @@ module.run(['$templateCache', function($templateCache) {
     '\n' +
     '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
     '    <pip-card width="400">\n' +
-    '        <pip-signup-panel>\n' +
+    '        <pip-signup-panel pip-hide-elements="{passwordConfirm: true}">\n' +
     '        </pip-signup-panel>\n' +
     '    </pip-card>\n' +
     '</div>\n' +
@@ -984,7 +1130,7 @@ module.run(['$templateCache', function($templateCache) {
     '                </div>\n' +
     '            </md-input-container>\n' +
     '\n' +
-    '            <md-input-container class="display bp4" ng-if="passwordConfirm">\n' +
+    '            <md-input-container class="display bp4" ng-if="!hideObject.passwordConfirm">\n' +
     '                <label>{{::\'PASSWORD_CONFIRM\' | translate}}</label>\n' +
     '                <input name="passwordConfirm"\n' +
     '                       type="password" tabindex="4"\n' +
@@ -1051,152 +1197,6 @@ module.run(['$templateCache', function($templateCache) {
     '            </div>\n' +
     '        </form>\n' +
     '    </div>\n' +
-    '</div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('pipEntry.Templates');
-} catch (e) {
-  module = angular.module('pipEntry.Templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('verify_email/verify_email.html',
-    '<!--\n' +
-    '@file Verify email page\n' +
-    '@copyright Digital Living Software Corp. 2014-2016\n' +
-    '-->\n' +
-    '\n' +
-    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
-    '    <pip-card width="400">\n' +
-    '        <div class="pip-body">\n' +
-    '            <div class="pip-content">\n' +
-    '                <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top" >\n' +
-    '                </md-progress-linear>\n' +
-    '\n' +
-    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
-    '\n' +
-    '                <p class="title-padding">{{\'VERIFY_EMAIL_TEXT_1\' | translate}} </p>\n' +
-    '\n' +
-    '                <form name=\'form\' novalidate>\n' +
-    '                    <div ng-messages="form.$serverError" class="text-error bm8">\n' +
-    '                        <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_UNKNOWN">\n' +
-    '                            {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                    <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">      \n' +
-    '                        {{\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
-    '                    </a>\n' +
-    '                    <div ng-show="showServerUrl">\n' +
-    '                        <md-autocomplete\n' +
-    '                                ng-initial autofocus tabindex="1"\n' +
-    '                                class="pip-combobox w-stretch bm8"\n' +
-    '                                name="server"\n' +
-    '                                ng-enabled="!transaction.busy()"\n' +
-    '                                placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
-    '                                md-no-cache="true"\n' +
-    '                                md-selected-item="data.serverUrl"\n' +
-    '                                md-search-text="selected.searchURLs"\n' +
-    '                                md-items="item in getMatches()"\n' +
-    '                                md-item-text="item"\n' +
-    '                                md-selected-item-change="onServerUrlChanged()"\n' +
-    '                                md-delay="200"\n' +
-    '                                ng-model="data.serverUrl"\n' +
-    '                                pip-clear-errors>\n' +
-    '                            <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
-    '                        </md-autocomplete>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                    <md-input-container class="pip-no-hint" style="padding-bottom: 4px!important;">\n' +
-    '                        <label>{{::\'EMAIL\' | translate}}</label>\n' +
-    '                        <input name="email" type="email" ng-model="data.email" required step="any"  pip-clear-errors\n' +
-    '                               ng-disabled="transaction.busy()" tabindex="2" />\n' +
-    '\n' +
-    '                        <div ng-messages="touchedErrorsWithHint(form, form.email)" ng-if="!form.email.$pristine" class="md-input-error">\n' +
-    '                            <div ng-message="hint" class="pip-input-hint">{{::\'HINT_EMAIL\' | translate}}</div>\n' +
-    '                            <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1104">{{::\'ERROR_1104\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1305">{{::\'ERROR_1305\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
-    '                        </div>\n' +
-    '                    </md-input-container>\n' +
-    '\n' +
-    '                    <md-input-container class="pip-no-hint">\n' +
-    '                        <label>{{::\'ENTRY_RESET_CODE\' | translate}}</label>\n' +
-    '                        <input name="code" ng-disabled="transaction.busy()"\n' +
-    '                               ng-model="data.code" required tabindex="3" />\n' +
-    '\n' +
-    '                        <div ng-messages="touchedErrorsWithHint(form, form.code)" ng-if="!form.fullName.$pristine" class="md-input-error">\n' +
-    '                            <div ng-message="hint" class="pip-input-hint">{{::\'ENTRY_RESET_CODE\' | translate}}</div>\n' +
-    '                            <div ng-message="required">{{::\'ERROR_CODE_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="ERROR_1108">{{::\'ERROR_1108\' | translate}}</div>\n' +
-    '                        </div>\n' +
-    '                    </md-input-container>\n' +
-    '\n' +
-    '                    <p> \n' +
-    '                        {{\'VERIFY_EMAIL_TEXT_21\' | translate}} \n' +
-    '                        <a ng-click="onRecover()" class="pointer" href="">{{\'VERIFY_EMAIL_RESEND\' | translate}}</a>\n' +
-    '                        {{\'VERIFY_EMAIL_TEXT_22\' | translate}} \n' +
-    '                    </p>\n' +
-    '                </form>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '        <div class="pip-footer">\n' +
-    '            <md-button ng-click="goBack()" ng-hide="transaction.busy()" class="rm8" aria-label="CANCEL">\n' +
-    '                {{::\'CANCEL\' | translate}}\n' +
-    '            </md-button>\n' +
-    '            <md-button class="md-accent" ng-click="onVerify()" ng-hide="transaction.busy()" aria-label="VERIFY"\n' +
-    '                ng-disabled="data.code.length == 0 || data.email.length == 0 || (!data.email && form.$pristine) || (!data.code)">\n' +
-    '                {{::\'VERIFY\' | translate}}\n' +
-    '            </md-button>\n' +
-    '            <md-button class="md-warn " ng-show="transaction.busy()" ng-click="transaction.abort()" aria-label="ABORT">\n' +
-    '                {{::\'CANCEL\' | translate}}\n' +
-    '            </md-button>\n' +
-    '        </div>\n' +
-    '    </pip-card>\n' +
-    '</div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('pipEntry.Templates');
-} catch (e) {
-  module = angular.module('pipEntry.Templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('verify_email/verify_email_success.html',
-    '<!--\n' +
-    '@file Email verification success page\n' +
-    '@copyright Digital Living Software Corp. 2014-2016\n' +
-    '-->\n' +
-    '\n' +
-    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
-    '    <pip-card width="400">\n' +
-    '        <div class="pip-footer">\n' +
-    '            <md-button ng-click="onContinue()" class="md-accent">\n' +
-    '                {{\'CONTINUE\' | translate}} \n' +
-    '            </md-button>\n' +
-    '        </div>\n' +
-    '        <div class="pip-body">\n' +
-    '            <div class="pip-content">\n' +
-    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
-    '\n' +
-    '                <p class="title-padding">\n' +
-    '                    {{\'VERIFY_EMAIL_SUCCESS_TEXT\' | translate}} \n' +
-    '                </p>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '    </pip-card>\n' +
     '</div>');
 }]);
 })();
@@ -2310,127 +2310,6 @@ module.run(['$templateCache', function($templateCache) {
 
 })();
 /**
- * @file Entry verify email controller
- * @copyright Digital Living Software Corp. 2014-2016
- */
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    var thisModule = angular.module('pipEntry.VerifyEmail', ['pipEntry.Common']);
-
-    thisModule.controller('pipVerifyEmailController',
-        ['$scope', '$rootScope', 'pipAuthState', 'pipTransaction', 'pipRest', 'pipFormErrors', 'pipEntryCommon', function ($scope, $rootScope, pipAuthState, pipTransaction, pipRest, 
-            pipFormErrors, pipEntryCommon) {
-
-            pipEntryCommon.configureAppBar();
-            pipEntryCommon.initScope($scope);
-
-            $scope.showServerError = true;
-            $scope.transaction = pipTransaction('entry.verify_email', $scope);
-
-            $scope.touchedErrorsWithHint = pipFormErrors.touchedErrorsWithHint;
-            $scope.onVerify = onVerify;
-            $scope.onRecover = onRecover;
-
-            return;
-
-            //-----------------------------
-
-            function onVerify() {
-                if ($scope.form.$invalid) {
-                    pipFormErrors.resetFormErrors($scope.form, true);
-                    return;
-                }
-
-                var transactionId = $scope.transaction.begin('PROCESSING');
-                if (!transactionId) return;
-
-                pipRest.verifyEmail($scope.data.serverUrl).call(
-                    {
-                        email: $scope.data.email,
-                        code: $scope.data.code
-                    },
-                    function (data) {
-                        pipFormErrors.resetFormErrors($scope.form, false);
-                        if ($scope.transaction.aborted(transactionId)) return;
-
-                        $scope.transaction.end();
-                        pipAuthState.go('verify_email_success', {});
-                    },
-                    function (error) {
-                        $scope.error = error;
-                        $scope.transaction.end($scope.error);
-                        pipFormErrors.resetFormErrors($scope.form, true);
-                        pipFormErrors.setFormError(
-                            $scope.form, $scope.error,
-                            {
-                                1100 : 'email', // Missing email
-                                1106 : 'email', // User was not found
-                                1104 : 'email', // Email is already registered
-                                1305 : 'email', // Email is already registered
-                                1108 : 'code', // Invalid password recovery code
-                                1000 : 'form', // Unknown error
-                                1110 : 'form', // Account is locked
-                                1111 : 'form', // Number of attempts exceeded. Account was locked
-                                1112 : 'form', // Account is not active
-                                '-1' : 'form' // server not response
-                            }
-                        );
-                    }
-                );
-            };
-
-            function onRecover() {
-                if (!$rootScope.$user || !$rootScope.$user.id) {
-                    return ;
-                }
-
-                var tid = $scope.transaction.begin('PROCESSING');
-                if (!tid) return;
-                pipRest.requestEmailVerification($scope.data.serverUrl).get(
-                    {
-                        party_id: $rootScope.$user.id,
-                        email: $scope.data.email
-                    },
-                    function (data) {
-                        if ($scope.transaction.aborted(tid)) return;
-
-                        $scope.transaction.end();
-                        pipAuthState.go('reset_password', {
-                            server_url: $scope.data.serverUrl,
-                            email: $scope.data.email
-                        });
-                    },
-                    function (error) {
-                        $scope.transaction.end(error);
-                    }
-                );
-            };
-        }]
-    );
-
-    thisModule.controller('pipVerifyEmailSuccessController',
-        ['$scope', 'pipAuthState', 'pipEntryCommon', function ($scope, pipAuthState, pipEntryCommon) {
-
-            pipEntryCommon.configureAppBar();
-
-            $scope.onContinue = onContinue;
-
-            return;
-            
-            //-----------------------------
-
-            function onContinue() {
-                pipAuthState.goToAuthorized({});
-            };
-        }]
-    );
-
-})();
-/**
  * @file Entry signin controller
  * @copyright Digital Living Software Corp. 2014-2016
  * @todo
@@ -2779,8 +2658,7 @@ module.run(['$templateCache', function($templateCache) {
                     gotoPostSignup:'=pipPostSignup',
                     gotoSigninPage:'=pipGotoSigninPage',
                     gotoSigninDialog:'=pipGotoSigninDialog',
-                    passwordConfirm: '=pipPasswordConfirm',
-                    hideElements: '=pipHideElements' // {title, server, agreement, signin}
+                    hideElements: '=pipHideElements' // {title, server, agreement, signin, passwordConfirm}
                 },
                 templateUrl: 'signup/signup_panel.html',
                 controller: 'pipSignupPanelController'
@@ -2816,15 +2694,10 @@ module.run(['$templateCache', function($templateCache) {
             return;
 
             function setElementVisability() {
-                if ($scope.passwordConfirm != undefined && $scope.passwordConfirm != null) {
-                    $scope.passwordConfirm = pipUtils.toBoolean($scope.passwordConfirm);
-                } else {
-                    $scope.passwordConfirm = true;
-                }
-                
                 $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
                 $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
                 $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
+                $scope.hideObject.passwordConfirm = pipUtils.toBoolean($scope.hideObject.passwordConfirm) == true;
                 $scope.hideObject.agreement = pipUtils.toBoolean($scope.hideObject.agreement) == true;
                 $scope.hideObject.signin = pipUtils.toBoolean($scope.hideObject.signin) == true;
             }
@@ -2920,6 +2793,127 @@ module.run(['$templateCache', function($templateCache) {
             }
 
         }])
+
+})();
+/**
+ * @file Entry verify email controller
+ * @copyright Digital Living Software Corp. 2014-2016
+ */
+
+/* global angular */
+
+(function () {
+    'use strict';
+
+    var thisModule = angular.module('pipEntry.VerifyEmail', ['pipEntry.Common']);
+
+    thisModule.controller('pipVerifyEmailController',
+        ['$scope', '$rootScope', 'pipAuthState', 'pipTransaction', 'pipRest', 'pipFormErrors', 'pipEntryCommon', function ($scope, $rootScope, pipAuthState, pipTransaction, pipRest, 
+            pipFormErrors, pipEntryCommon) {
+
+            pipEntryCommon.configureAppBar();
+            pipEntryCommon.initScope($scope);
+
+            $scope.showServerError = true;
+            $scope.transaction = pipTransaction('entry.verify_email', $scope);
+
+            $scope.touchedErrorsWithHint = pipFormErrors.touchedErrorsWithHint;
+            $scope.onVerify = onVerify;
+            $scope.onRecover = onRecover;
+
+            return;
+
+            //-----------------------------
+
+            function onVerify() {
+                if ($scope.form.$invalid) {
+                    pipFormErrors.resetFormErrors($scope.form, true);
+                    return;
+                }
+
+                var transactionId = $scope.transaction.begin('PROCESSING');
+                if (!transactionId) return;
+
+                pipRest.verifyEmail($scope.data.serverUrl).call(
+                    {
+                        email: $scope.data.email,
+                        code: $scope.data.code
+                    },
+                    function (data) {
+                        pipFormErrors.resetFormErrors($scope.form, false);
+                        if ($scope.transaction.aborted(transactionId)) return;
+
+                        $scope.transaction.end();
+                        pipAuthState.go('verify_email_success', {});
+                    },
+                    function (error) {
+                        $scope.error = error;
+                        $scope.transaction.end($scope.error);
+                        pipFormErrors.resetFormErrors($scope.form, true);
+                        pipFormErrors.setFormError(
+                            $scope.form, $scope.error,
+                            {
+                                1100 : 'email', // Missing email
+                                1106 : 'email', // User was not found
+                                1104 : 'email', // Email is already registered
+                                1305 : 'email', // Email is already registered
+                                1108 : 'code', // Invalid password recovery code
+                                1000 : 'form', // Unknown error
+                                1110 : 'form', // Account is locked
+                                1111 : 'form', // Number of attempts exceeded. Account was locked
+                                1112 : 'form', // Account is not active
+                                '-1' : 'form' // server not response
+                            }
+                        );
+                    }
+                );
+            };
+
+            function onRecover() {
+                if (!$rootScope.$user || !$rootScope.$user.id) {
+                    return ;
+                }
+
+                var tid = $scope.transaction.begin('PROCESSING');
+                if (!tid) return;
+                pipRest.requestEmailVerification($scope.data.serverUrl).get(
+                    {
+                        party_id: $rootScope.$user.id,
+                        email: $scope.data.email
+                    },
+                    function (data) {
+                        if ($scope.transaction.aborted(tid)) return;
+
+                        $scope.transaction.end();
+                        pipAuthState.go('reset_password', {
+                            server_url: $scope.data.serverUrl,
+                            email: $scope.data.email
+                        });
+                    },
+                    function (error) {
+                        $scope.transaction.end(error);
+                    }
+                );
+            };
+        }]
+    );
+
+    thisModule.controller('pipVerifyEmailSuccessController',
+        ['$scope', 'pipAuthState', 'pipEntryCommon', function ($scope, pipAuthState, pipEntryCommon) {
+
+            pipEntryCommon.configureAppBar();
+
+            $scope.onContinue = onContinue;
+
+            return;
+            
+            //-----------------------------
+
+            function onContinue() {
+                pipAuthState.goToAuthorized({});
+            };
+        }]
+    );
 
 })();
 //# sourceMappingURL=pip-webui-entry.js.map

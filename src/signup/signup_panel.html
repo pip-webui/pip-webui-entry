@@ -119,7 +119,7 @@
                 </div>
             </md-input-container>
 
-            <md-input-container class="display bp4" ng-if="passwordConfirm">
+            <md-input-container class="display bp4" ng-if="!hideObject.passwordConfirm">
                 <label>{{::'PASSWORD_CONFIRM' | translate}}</label>
                 <input name="passwordConfirm"
                        type="password" tabindex="4"

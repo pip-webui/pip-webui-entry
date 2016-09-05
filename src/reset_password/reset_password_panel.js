@@ -17,8 +17,8 @@
                 replace: true,
                 scope: {
                     data: '=pipData',
-                    created: '&pipCreated'
-
+                    created: '&pipCreated',
+                    hideElements: '=pipHideElements' // {title, subTitle, server}
                 },
                 templateUrl: 'reset_password/reset_password_panel.html',
                 controller: 'pipResetPasswordPanelController'
@@ -31,6 +31,8 @@
                   pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipRest, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
+
+            setElementVisability();
 
             pipEntryCommon.initScope($scope);
 
@@ -50,6 +52,13 @@
             }
 
             return;
+
+            function setElementVisability() {
+                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
+                $scope.hideObject.subTitle = pipUtils.toBoolean($scope.hideObject.subTitle) == true;
+                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
+                $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
+            }
 
             //-----------------------------
 

@@ -14,6 +14,7 @@
                     gotoPostSignup:'=pipPostSignup',
                     gotoSigninPage:'=pipGotoSigninPage',
                     gotoSigninDialog:'=pipGotoSigninDialog',
+                    passwordConfirm: '=pipPasswordConfirm',
                     hideElements: '=pipHideElements' // {title, server, agreement, signin}
                 },
                 templateUrl: 'signup/signup_panel.html',
@@ -50,6 +51,12 @@
             return;
 
             function setElementVisability() {
+                if ($scope.passwordConfirm != undefined && $scope.passwordConfirm != null) {
+                    $scope.passwordConfirm = pipUtils.toBoolean($scope.passwordConfirm);
+                } else {
+                    $scope.passwordConfirm = true;
+                }
+                
                 $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
                 $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
                 $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;

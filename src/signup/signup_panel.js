@@ -13,7 +13,8 @@
                 scope: {
                     gotoPostSignup:'=pipPostSignup',
                     gotoSigninPage:'=pipGotoSigninPage',
-                    gotoSigninDialog:'=pipGotoSigninDialog'
+                    gotoSigninDialog:'=pipGotoSigninDialog',
+                    hideElements: '=pipHideElements' // {title, server, agreement, signin}
                 },
                 templateUrl: 'signup/signup_panel.html',
                 controller: 'pipSignupPanelController'
@@ -23,10 +24,11 @@
     );
     thisModule.controller('pipSignupPanelController',
         function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
-                  pipFormErrors, pipEntryCommon, pipRest, $mdMedia, $state) {
+                  pipFormErrors, pipEntryCommon, pipRest, $mdMedia, $state, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
 
+            setElementVisability();
 
             pipEntryCommon.initScope($scope);
 
@@ -46,6 +48,14 @@
             $scope.gotoSignin =  gotoSignin;
 
             return;
+
+            function setElementVisability() {
+                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
+                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
+                $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
+                $scope.hideObject.agreement = pipUtils.toBoolean($scope.hideObject.agreement) == true;
+                $scope.hideObject.signin = pipUtils.toBoolean($scope.hideObject.signin) == true;
+            }
 
             function gotoSignin(){
                 if(!$scope.gotoSigninPage &&  !$scope.gotoSigninDialog){

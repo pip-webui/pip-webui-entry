@@ -3,7 +3,7 @@
         <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top">
         </md-progress-linear>
 
-        <h2 pip-translate="SIGNUP_TITLE"></h2>
+        <h2 pip-translate="SIGNUP_TITLE" ng-if="!hideObject.title"></h2>
 
         <form name="form" novalidate autocomplete="off">
             <input type="email" style="display:none">
@@ -20,11 +20,11 @@
                 </div>
             </div>
 
-            <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">
+            <a ng-hide="showServerUrl || fixedServerUrl || hideObject.server" ng-click="showServerUrl = true" href="">
                 {{::'ENTRY_CHANGE_SERVER' | translate}}
             </a>
 
-            <div ng-show="showServerUrl">
+            <div ng-show="showServerUrl && !hideObject.server">
                 <md-autocomplete
                         ng-initial autofocus tabindex="1"
                         class="pip-combobox w-stretch bm8"
@@ -44,7 +44,6 @@
                     <span md-highlight-text="selected.searchURLs">{{item}}</span>
                 </md-autocomplete>
             </div>
-
 
             <md-input-container class="display bp4">
                 <label>{{::'FULLNAME' | translate}}</label>
@@ -147,7 +146,7 @@
                 </div>
             </md-input-container>
 
-            <p class="text-small-secondary">
+            <p class="text-small-secondary" ng-if="!hideObject.agreement">
                 {{::'SIGNUP_TEXT_11' | translate}}
                 <a href="#/legal/privacy">{{::'SIGNUP_PRIVACY' | translate}}</a>
                 {{::'SIGNUP_TEXT_12' | translate}}
@@ -167,7 +166,7 @@
                 {{::'CANCEL' | translate}}
             </md-button>
 
-            <div class="tm24 layout-row" ng-if="$mdMedia('gt-xs')">
+            <div class="tm24 layout-row" ng-if="$mdMedia('gt-xs') && !hideObject.signin">
                 <p class="text-small m0">
                     {{::'SIGNUP_TEXT_2' | translate}}
                     <a href="" ng-click="gotoSignin()">
@@ -175,7 +174,7 @@
                     </a>
                 </p>
             </div>
-            <div class="tm24 divider-top" ng-if="$mdMedia('xs')"
+            <div class="tm24 divider-top" ng-if="$mdMedia('xs') && !hideObject.signin"
                  style="margin-right: -16px; margin-left: -16px; background-color: rgb(238, 238, 238);">
                 <div class="h48 layout-row layout-align-center-end">
                     <p class="bm0 text-small">{{::'SIGNUP_TEXT_2' | translate}}</p>

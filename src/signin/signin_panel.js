@@ -34,7 +34,7 @@
 
             $scope.$mdMedia = $mdMedia;
 
-            setHElementVisability();
+            setElementVisability();
 
             $scope.showServerError = true;
             $scope.transaction = pipTransaction('entry.signin', $scope);
@@ -50,7 +50,7 @@
 
             return;
 
-            function setHElementVisability() {
+            function setElementVisability() {
                 $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
                 $scope.hideObject.remember = pipUtils.toBoolean($scope.hideObject.remember) == true;
                 $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
@@ -58,8 +58,6 @@
                 $scope.hideObject.forgotPassword = pipUtils.toBoolean($scope.hideObject.forgotPassword) == true;
                 $scope.hideObject.signup = pipUtils.toBoolean($scope.hideObject.signup) == true;
             }
-
-            
 
             function gotoSignup(){
                 if(!$scope.gotoSignupPage &&  !$scope.gotoSignupDialog){

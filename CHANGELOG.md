@@ -1,7 +1,7 @@
 # Pip.WebUI Changelog
 
 * Add visability parametrs to signIn panel: remembers checkbox, title string, server autocomplete, forgotPassword string, signup link.
-* Add visability parametrs to signUp panel: title string, server autocomplete, agreement string, signin link.
+* Add visability parametrs to signUp panel: title string, server autocomplete, agreement string, signin link, passwordConfirm.
 * Add visability parametrs to reset password panel: title string, subTitle string, server autocomplete
 * Add visability parametrs to post signUp panel: title string, success title string, subTitle string
 * Add visability parametrs to recovery password panel: title string, subTitle1 string, subTitle2 string, server autocomplete,  

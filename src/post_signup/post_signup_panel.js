@@ -18,8 +18,8 @@
                 scope: {
                     data:'=pipData',
                     created:'&pipCreated',
-                    $party:'=pipParty'
-
+                    $party:'=pipParty',
+                    hideElements: '=pipHideElements' // {title, successTitle, subTitle}
                 },
                 templateUrl: 'post_signup/post_signup_panel.html',
                 controller: 'pipPostSignupPanelController'
@@ -32,6 +32,8 @@
                   pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipRest, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
+
+            setElementVisability();
 
             pipEntryCommon.initScope($scope);
             $scope.showServerError = true;
@@ -66,6 +68,13 @@
             $scope.onPostSignupSubmit = onPostSignupSubmit;
 
             return;
+
+            function setElementVisability() {
+                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
+                $scope.hideObject.subTitle = pipUtils.toBoolean($scope.hideObject.subTitle) == true;
+                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
+                $scope.hideObject.successTitle = pipUtils.toBoolean($scope.hideObject.successTitle) == true; 
+            }
 
             //---------------------------
 

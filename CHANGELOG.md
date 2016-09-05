@@ -1,5 +1,7 @@
 # Pip.WebUI Changelog
 
+* Add visability for signIn elements: remembers checkbox, title string, server autocomplete, forgotPassword string, signup link.
+
 ## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
 Initial release with user signup, signin, password and email management pages

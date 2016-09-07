@@ -1,11 +1,11 @@
 # Pip.WebUI Changelog
 
-* Add visability parametrs to signIn panel: remembers checkbox, title string, server autocomplete, forgotPassword string, signup link.
-* Add visability parametrs to signUp panel: title string, server autocomplete, agreement string, signin link, passwordConfirm.
-* Add visability parametrs to reset password panel: title string, subTitle string, server autocomplete
-* Add visability parametrs to post signUp panel: title string, success title string, subTitle string
-* Add visability parametrs to recovery password panel: title string, subTitle1 string, subTitle2 string, server autocomplete,  
-
+* Add visability parametrs to signIn panel: remembers checkbox, title string, server autocomplete, forgotPassword string, signup link, hint by input fields.
+* Add visability parametrs to signUp panel: title string, server autocomplete, agreement string, signin link, passwordConfirm, hint by input fields.
+* Add visability parametrs to reset password panel: title string, subTitle string, server autocomplete, hint by input fields.
+* Add visability parametrs to post signUp panel: title string, success title string, subTitle string, hint by input fields.
+* Add visability parametrs to recovery password panel: title string, subTitle1 string, subTitle2 string, server autocomplete, hint by input fields. 
+* Remove minlength error hint by password field into signin panel
 ## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
 Initial release with user signup, signin, password and email management pages

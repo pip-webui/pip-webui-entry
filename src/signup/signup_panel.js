@@ -57,6 +57,7 @@
                 $scope.hideObject.agreement = pipUtils.toBoolean($scope.hideObject.agreement) == true;
                 $scope.hideObject.signin = pipUtils.toBoolean($scope.hideObject.signin) == true;
                 $scope.hideObject.hint = pipUtils.toBoolean($scope.hideObject.hint) == true; 
+                $scope.hideObject.progress = pipUtils.toBoolean($scope.hideObject.progress) == true;
             }
 
             function gotoSignin(){

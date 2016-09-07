@@ -58,6 +58,7 @@
                 $scope.hideObject.forgotPassword = pipUtils.toBoolean($scope.hideObject.forgotPassword) == true;
                 $scope.hideObject.signup = pipUtils.toBoolean($scope.hideObject.signup) == true;
                 $scope.hideObject.hint = pipUtils.toBoolean($scope.hideObject.hint) == true;
+                $scope.hideObject.progress = pipUtils.toBoolean($scope.hideObject.progress) == true;
             }
 
             function gotoSignup(){

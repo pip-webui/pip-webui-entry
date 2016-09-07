@@ -61,6 +61,7 @@
                 $scope.hideObject.subTitle2 = pipUtils.toBoolean($scope.hideObject.subTitle2) == true; 
                 $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
                 $scope.hideObject.hint = pipUtils.toBoolean($scope.hideObject.hint) == true; 
+                $scope.hideObject.progress = pipUtils.toBoolean($scope.hideObject.progress) == true;
             }
 
             //-----------------------------

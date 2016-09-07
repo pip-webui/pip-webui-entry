@@ -1,6 +1,6 @@
 <div class="pip-body">
     <div class="pip-content">
-        <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top">
+        <md-progress-linear ng-show="transaction.busy() && !hideObject.progress" md-mode="indeterminate" class="pip-progress-top">
         </md-progress-linear>
 
         <h2 class="text-overflow" ng-if="!hideObject.title">{{'POST_SIGNUP_TITLE' | translate}}</h2>

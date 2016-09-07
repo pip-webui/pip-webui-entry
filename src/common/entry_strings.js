@@ -26,6 +26,7 @@
             // Common hints
             'HINT_FULLNAME': "Use your real name, so others know who you are",
             'HINT_PASSWORD': 'Minimum 6 characters',
+            'SIGNIN_HINT_PASSWORD': 'Please, type password',
             'HINT_ABOUT': 'Few words about yourself',
             'VERIFY_EMAIL': 'Please, verify your email address. ',
             'HINT_EMAIL': 'Please, type your email address.',
@@ -117,6 +118,7 @@
             // Common hints
             'HINT_FULLNAME': "Используйте своё настоящее имя, чтобы другие знали с кем имеют дело",
             'HINT_PASSWORD': 'Минимум 6 символов',
+            'SIGNIN_HINT_PASSWORD': 'Введите пароль',
             'HINT_ABOUT': 'Несколько слов о себе',
             'VERIFY_EMAIL': 'Подтвердите адрес своей эл.почты',
             'HINT_EMAIL': 'Введите адрес своей эл.почты',

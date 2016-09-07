@@ -6,6 +6,8 @@
 * Add visability parametrs to post signUp panel: title string, success title string, subTitle string.
 * Add visability parametrs to recovery password panel: title string, subTitle1 string, subTitle2 string, server autocomplete, hint by input fields. 
 * Remove minlength error hint by password field into signin panel
+* Change required password error message
+
 ## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
 Initial release with user signup, signin, password and email management pages

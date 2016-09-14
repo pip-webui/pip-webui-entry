@@ -28,8 +28,8 @@
         }
     );
     thisModule.controller('pipPostSignupPanelController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
-                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipRest, pipUtils) {
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
+                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipDataParty, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
 
@@ -104,9 +104,8 @@
                 var transactionId = $scope.transaction.begin('PROCESSING');
                 if (!transactionId) return;
 
-                pipRest.parties().update(
+                pipDataParty.createParty(
                     $scope.data,
-
                     function (party) {
                         pipFormErrors.resetFormErrors($scope.form, false);
                         if ($scope.transaction.aborted(transactionId)) return;
@@ -114,7 +113,7 @@
                         $scope.transaction.end();
 
                         if (!pipUtils.checkSupported()) {
-                            pipSession.signout();
+                            pipDataSession.signout();
                             $state.go('errors_unsupported');
                             return ;
                         }

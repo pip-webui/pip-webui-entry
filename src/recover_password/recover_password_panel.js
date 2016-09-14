@@ -28,8 +28,8 @@
         }
     );
     thisModule.controller('pipRecoverPasswordPanelController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
-                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipRest, pipUtils) {
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState,
+                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipDataUser, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
 
@@ -75,11 +75,11 @@
                 var transactionId = $scope.transaction.begin('PROCESSING');
                 if (!transactionId) return;
 
-                pipRest.recoverPassword($scope.data.serverUrl).call(
-                    {
-                        email: $scope.data.email
-                    },
-                    function (data) {
+                pipDataUser.recoverPassword({
+                    serverUrl: $scope.data.serverUrl,
+                    email: $scope.data.email
+                },
+                function (data) {
                         pipFormErrors.resetFormErrors($scope.form, false);
                         if ($scope.transaction.aborted(transactionId)) return;
 
@@ -91,8 +91,8 @@
                             });
                         else
                             $scope.gotoReset();
-                    },
-                    function (error) {
+                },
+                function (error) {
                         $scope.error = error;
                         $scope.transaction.end($scope.error);
                         pipFormErrors.setFormError(

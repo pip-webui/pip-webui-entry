@@ -12,7 +12,7 @@
         [
             'ui.router', 'ngMessages', 
             
-            'pipCore', 'pipRest', 'pipBasicControls', 'pipLocations', 'pipPictures', 'pipRest.State',
+            'pipCore', 'pipData', 'pipDataSession', 'pipBasicControls', 'pipLocations', 'pipPictures', 'pipRest', 'pipRest.State',
             'pipEntry.Strings', 'pipEntry.Common', 'pipEntry.Signin', 'pipEntry.Signup', 'pipEntry.PostSignup', 
             'pipEntry.RecoverPassword', 'pipEntry.ResetPassword', 'pipEntry.VerifyEmail', 'pipEntry.Templates'
         ]);
@@ -60,8 +60,8 @@
                     controller: 'pipPostSignupController',
                     templateUrl: 'post_signup/post_signup.html',
                     resolve: {
-                        $party: /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipSession) {
-                            var userId = pipSession.userId();
+                        $party: /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipDataSession) {
+                            var userId = pipDataSession.userId();
                             var partyId = $stateParams.party_id || userId;
 
                             if (partyId != userId)

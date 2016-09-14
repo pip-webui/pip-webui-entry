@@ -23,8 +23,8 @@
         }
     );
     thisModule.controller('pipSignupPanelController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
-                  pipFormErrors, pipEntryCommon, pipRest, $mdMedia, $state, pipUtils) {
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession, pipDataUser,
+                  pipFormErrors, pipEntryCommon, $mdMedia, $state, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
 
@@ -96,8 +96,9 @@
                 }
                 var transactionId = $scope.transaction.begin('PROCESSING');
                 if (!transactionId) return;
-                pipRest.signup($scope.data.serverUrl).call(
+                pipDataUser.signup(
                     {
+                        serverUrl: $scope.data.serverUrl,
                         name: $scope.data.name,
                         email: $scope.data.email,
                         password: $scope.data.password,
@@ -109,7 +110,11 @@
                         if ($scope.transaction.aborted(transactionId)) return;
                         $scope.transaction.end();
 
-                        pipSession.open($scope.data.serverUrl, user, $scope.data.password, false);
+                        pipDataSession.open({
+                            serverUrl: $scope.data.serverUrl, 
+                            user: user, 
+                            password: $scope.data.password, 
+                            remember: false});
                         if(!$scope.gotoPostSignup)
                             pipAuthState.go('post_signup', { party_id: user.id });
                         else

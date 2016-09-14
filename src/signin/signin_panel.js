@@ -29,7 +29,7 @@
         }
     );
     thisModule.controller('pipSigninPanelController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
                   pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTheme, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
@@ -103,14 +103,14 @@
                     $scope.data.remember = true;
                 }
 
-                pipSession.signin($scope.data,
+                pipDataSession.signin($scope.data,
                     function (user) {
                         pipFormErrors.resetFormErrors($scope.form, false);
                         if ($scope.transaction.aborted(transactionId))return;
                         $scope.transaction.end();
 
                         if (!pipUtils.checkSupported()) {
-                            pipSession.signout();
+                            pipDataSession.signout();
                             $state.go('errors_unsupported');
                             return ;
                         }

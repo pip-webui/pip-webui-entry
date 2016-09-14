@@ -11,7 +11,7 @@
     var thisModule = angular.module('pipEntry.RecoverPassword', ['pipEntry.Common', "pipRecoverPasswordPanel"]);
 
     thisModule.controller('pipRecoverPasswordController',
-        function ($scope, $rootScope, pipUtils, pipAuthState, pipTransaction, pipRest, 
+        function ($scope, $rootScope, pipUtils, pipAuthState, pipTransaction, pipDataUser, 
             pipFormErrors, pipEntryCommon, $window) {
 
             pipEntryCommon.configureAppBar();

@@ -36,7 +36,7 @@
     );
 
     thisModule.controller('pipPostSignupDialogController',
-        function ($scope, $rootScope, $location, pipSession, params) {
+        function ($scope, $rootScope, $location, params) {
             $scope.$party = params.$party;
 
             $scope.onPostSignupSubmit = onPostSignupSubmit;

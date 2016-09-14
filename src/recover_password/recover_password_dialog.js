@@ -37,7 +37,7 @@
     );
 
     thisModule.controller('pipRecoverPasswordDialogController',
-        function ($scope, $rootScope, $location, pipSession, params, $mdDialog, pipResetPasswordDialog){
+        function ($scope, $rootScope, $location, params, $mdDialog, pipResetPasswordDialog){
 
             $scope.onRecover = onRecover;
 

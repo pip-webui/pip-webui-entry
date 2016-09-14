@@ -37,7 +37,7 @@
     });
 
     thisModule.factory('pipEntryCommon',
-        function ($rootScope, $state, $window, pipAppBar, pipSession, pipRest, pipEntry, pipFormErrors) {
+        function ($rootScope, $state, $window, pipAppBar, pipSession, pipDataConfig, pipEntry, pipFormErrors) {
             return {
                 configureAppBar: configureAppBar,
                 initScope: initScope
@@ -61,7 +61,7 @@
             function initScope($scope) {
                 $scope.adminOnly = pipEntry.adminOnly();
                 $scope.data = {
-                    serverUrl: pipRest.serverUrl(), //$state.params.server_url || 'http://alpha.pipservices.net',
+                    serverUrl: pipDataConfig.serverUrl(), //$state.params.server_url || 'http://alpha.pipservices.net',
                     email: ($state.name != 'signup' && $state.params.email) ? $state.params.email : null,
                     password: '',
                     remember: false,
@@ -76,7 +76,7 @@
         
                 // Fixed server url shall disable changing URL by the user
                 if (pipEntry.fixedServerUrl()) {
-                    $scope.data.serverUrl = pipRest.serverUrl();
+                    $scope.data.serverUrl = pipDataConfig.serverUrl();
                     $scope.fixedServerUrl = true;  
                 }
                         
@@ -121,7 +121,7 @@
         
                 function onServerUrlChanged() {
                     // Change server url for REST API
-                    pipRest.serverUrl($scope.data.serverUrl);
+                    pipDataConfig.serverUrl($scope.data.serverUrl);
                     
                     if (!$scope.selected.searchURLs) return;
                     var server = $scope.servers[$scope.data.serverUrl];

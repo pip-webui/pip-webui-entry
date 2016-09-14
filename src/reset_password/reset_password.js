@@ -14,7 +14,7 @@
         'pipEmailUnique']);
 
     thisModule.controller('pipResetPasswordController',
-        function ($scope, $rootScope, pipUtils, pipAuthState, pipTransaction, pipRest, pipToasts, 
+        function ($scope, $rootScope, pipUtils, pipAuthState, pipTransaction, pipDataUser, pipToasts, 
             pipTranslate, pipFormErrors, pipEntryCommon, $window) {
 
             pipEntryCommon.configureAppBar();

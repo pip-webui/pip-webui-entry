@@ -37,9 +37,9 @@
     );
 
     thisModule.controller('pipSignupDialogController',
-        function ($scope, $rootScope, $location, pipSession, pipSigninDialog, pipPostSignupDialog) {
+        function ($scope, $rootScope, $location, pipDataSession, pipSigninDialog, pipPostSignupDialog) {
 
-            pipSession.signout();
+            pipDataSession.signout();
             $scope.pipGotoSigninDialog = pipGotoSigninDialog;
             $scope.pipPostSignup = pipPostSignup;
 

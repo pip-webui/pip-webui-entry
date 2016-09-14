@@ -14,11 +14,11 @@
     var thisModule = angular.module('pipEntry.Signin', ['pipEntry.Common', "pipSigninPanel"]);
 
     thisModule.controller('pipSigninController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession,
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
             pipFormErrors, pipEntryCommon) {
 
             pipEntryCommon.configureAppBar();
-            if (!$rootScope.isSignin) pipSession.signout(); // hak for set language
+            if (!$rootScope.isSignin) pipDataSession.signout(); // hack for set language
 
             $rootScope.isSignin = false;
             return;

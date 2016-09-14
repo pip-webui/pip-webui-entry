@@ -11,7 +11,7 @@
     var thisModule = angular.module('pipEntry.VerifyEmail', ['pipEntry.Common']);
 
     thisModule.controller('pipVerifyEmailController',
-        function ($scope, $rootScope, pipAuthState, pipTransaction, pipRest, 
+        function ($scope, $rootScope, pipAuthState, pipTransaction, pipDataUser, 
             pipFormErrors, pipEntryCommon) {
 
             pipEntryCommon.configureAppBar();
@@ -37,8 +37,9 @@
                 var transactionId = $scope.transaction.begin('PROCESSING');
                 if (!transactionId) return;
 
-                pipRest.verifyEmail($scope.data.serverUrl).call(
+                pipDataUser.verifyEmail(
                     {
+                        serverUrl: $scope.data.serverUrl,
                         email: $scope.data.email,
                         code: $scope.data.code
                     },

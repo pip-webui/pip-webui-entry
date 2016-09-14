@@ -37,10 +37,10 @@
     );
 
     thisModule.controller('pipSigninDialogController',
-        function ($scope, $rootScope, $location, pipSession,  pipSignupDialog, pipRecoverPasswordDialog) {
+        function ($scope, $rootScope, $location, pipDataSession,  pipSignupDialog, pipRecoverPasswordDialog) {
 
             //pipEntryCommon.configureAppBar();
-            pipSession.signout();
+            pipDataSession.signout();
 
             $scope.pipGotoSignupDialog = pipGotoSignupDialog;
             $scope.pipGotoRecoverPasswordDialog = pipGotoRecoverPasswordDialog;

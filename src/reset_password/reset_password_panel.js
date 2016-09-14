@@ -27,8 +27,8 @@
         }
     );
     thisModule.controller('pipResetPasswordPanelController',
-        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipSession, pipToasts,
-                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipRest, pipUtils) {
+        function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipToasts,
+                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTranslate, pipEnums, pipDataUser, pipUtils) {
 
             $scope.$mdMedia = $mdMedia;
 
@@ -88,8 +88,9 @@
                 var transactionId = $scope.transaction.begin('PROCESSING');
                 if (!transactionId) return;
 
-                pipRest.resetPassword($scope.data.serverUrl).call(
+                pipDataUser.resetPassword(
                     {
+                        serverUrl: $scope.data.serverUrl,
                         email: $scope.data.email,
                         code: $scope.data.code,
                         password: $scope.data.password

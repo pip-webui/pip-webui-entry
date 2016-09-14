@@ -12,7 +12,7 @@
         'pipPasswordMatch']);
 
     thisModule.controller('pipSignupController',
-        function ($scope, $rootScope, pipAuthState, pipTransaction, pipRest, pipSession, //pipAuth,
+        function ($scope, $rootScope, pipAuthState, pipTransaction, //pipAuth,
             pipFormErrors, pipEntryCommon) {
 
             pipEntryCommon.configureAppBar();

@@ -9,11 +9,11 @@
     'use strict';
 
     var thisModule = angular.module('pipSampleConfig',
-        ['pipRest.State', 'pipRest', 'pipEntry', 'pipSideNav', 'pipAppBar']);
+        ['pipRest.State', 'pipData', 'pipEntry', 'pipSideNav', 'pipAppBar']);
 
     // Configure application services before start
     thisModule.config(
-        function ($mdIconProvider, $urlRouterProvider, pipAuthStateProvider, pipRestProvider,
+        function ($mdIconProvider, $urlRouterProvider, pipAuthStateProvider, pipDataConfigProvider,
             pipSideNavProvider, pipAppBarProvider, pipTranslateProvider) {
 
             $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
@@ -26,7 +26,7 @@
 
             // Configure REST API
             // pipRestProvider.version('1.0');
-            pipRestProvider.serverUrl('http://alpha.pipservices.net');
+            pipDataConfigProvider.serverUrl('http://alpha.pipservices.net');
             $urlRouterProvider.otherwise(function ($injector, $location) {
                 return $location.$$path === '' ? '/' : '/welcome';
             });

@@ -36,7 +36,7 @@
     );
 
     thisModule.controller('pipResetPasswordDialogController',
-        function ($scope, $rootScope, $location, pipSession, params, $mdDialog){
+        function ($scope, $rootScope, $location, params, $mdDialog){
 
             $scope.onReset = onReset;
 

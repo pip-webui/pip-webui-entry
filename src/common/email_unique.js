@@ -10,10 +10,10 @@
 (function () {
     'use strict';
 
-    var thisModule = angular.module('pipEmailUnique', ['ngResource', 'pipRest']);
+    var thisModule = angular.module('pipEmailUnique', ['ngResource', 'pipDataUser']);
 
     thisModule.directive('pipEmailUnique',
-        function ($http, pipRest) {
+        function ($http, pipDataUser) {
             return {
                 restrict: 'A',
                 require: 'ngModel',
@@ -29,17 +29,14 @@
 
                         if (!newValue) ngModel.$setValidity('emailUnique', true);
 
-                        pipRest.signupValidate().call(
-                            {
-                                email: newValue
-                            },
+                        pipDataUser.signupValidate(email, 
                             function (data) {
                                 ngModel.$setValidity('emailUnique', true);
-                            },
+                            }, 
                             function (err) {
                                 ngModel.$setValidity('emailUnique', false);
-                            }
-                        );
+                            });
+                            
                     }, 500));
                 }
             };

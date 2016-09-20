@@ -71,7 +71,7 @@
                         );
                     }
                 );
-            };
+            }
 
             function onRecover() {
                 if (!$rootScope.$user || !$rootScope.$user.id) {
@@ -80,9 +80,10 @@
 
                 var tid = $scope.transaction.begin('PROCESSING');
                 if (!tid) return;
-                pipRest.requestEmailVerification($scope.data.serverUrl).get(
+
+                pipDataUser.requestEmailVerification(
                     {
-                        party_id: $rootScope.$user.id,
+                        serverUrl: $scope.data.serverUrl,
                         email: $scope.data.email
                     },
                     function (data) {
@@ -98,7 +99,7 @@
                         $scope.transaction.end(error);
                     }
                 );
-            };
+            }
         }
     );
 

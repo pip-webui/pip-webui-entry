@@ -29,7 +29,7 @@
 
                         if (!newValue) ngModel.$setValidity('emailUnique', true);
 
-                        pipDataUser.signupValidate(email, 
+                        pipDataUser.signupValidate(newValue, 
                             function (data) {
                                 ngModel.$setValidity('emailUnique', true);
                             }, 

@@ -18,7 +18,7 @@
         ]);
 
     thisModule.config(
-        function ($stateProvider, $locationProvider, $httpProvider, pipAuthStateProvider) {
+        function ($stateProvider, $locationProvider, $httpProvider, pipAuthStateProvider, pipDataPartyProvider) {
 
             // Switch to HTML5 routing mode
             //$locationProvider.html5Mode(true);
@@ -60,14 +60,15 @@
                     controller: 'pipPostSignupController',
                     templateUrl: 'post_signup/post_signup.html',
                     resolve: {
-                        $party: /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipDataSession) {
-                            var userId = pipDataSession.userId();
-                            var partyId = $stateParams.party_id || userId;
+                        $party: pipDataPartyProvider.readPartiesResolver() 
+                        // /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipDataSession) {
+                        //     var userId = pipDataSession.userId();
+                        //     var partyId = $stateParams.party_id || userId;
 
-                            if (partyId != userId)
-                                throw('ERROR_NOT_ALLOWED');
-                            return pipRest.parties().get({ id: partyId }).$promise;
-                        }
+                        //     if (partyId != userId)
+                        //         throw('ERROR_NOT_ALLOWED');
+                        //     return pipRest.parties().get({ id: partyId }).$promise;
+                        // }
                     }
                 })
                 .state('verify_email', {

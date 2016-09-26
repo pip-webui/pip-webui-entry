@@ -1,96 +1,3 @@
-/**
- * @file Entry pages (signin, signup) logic
- * @copyright Digital Living Software Corp. 2014-2016
- */
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    var thisModule = angular.module('pipEntry', 
-        [
-            'ui.router', 'ngMessages', 
-            
-            'pipCore', 'pipData', 'pipBasicControls', 'pipLocations', 'pipPictures', 'pipRest', 'pipRest.State',
-            'pipEntry.Strings', 'pipEntry.Common', 'pipEntry.Signin', 'pipEntry.Signup', 'pipEntry.PostSignup', 
-            'pipEntry.RecoverPassword', 'pipEntry.ResetPassword', 'pipEntry.VerifyEmail', 'pipEntry.Templates'
-        ]);
-
-    thisModule.config(
-        ['$stateProvider', '$locationProvider', '$httpProvider', 'pipAuthStateProvider', 'pipDataPartyProvider', function ($stateProvider, $locationProvider, $httpProvider, pipAuthStateProvider, pipDataPartyProvider) {
-
-            // Switch to HTML5 routing mode
-            //$locationProvider.html5Mode(true);
-
-
-            // Configure module routes for all users
-            $stateProvider
-                .state('signin', {
-                    url: '/signin?email&server_url&redirect_to',
-                    auth: false,
-                    controller: 'pipSigninController',
-                    templateUrl: 'signin/signin.html'
-                })
-                .state('recover_password', {
-                    url: '/recover_password?server_url&email',
-                    auth: false,
-                    controller: 'pipRecoverPasswordController',
-                    templateUrl: 'recover_password/recover_password.html'
-                })
-                .state('reset_password', {
-                    url: '/reset_password?server_url&email&code',
-                    auth: false,
-                    controller: 'pipResetPasswordController',
-                    templateUrl: 'reset_password/reset_password.html'
-                })
-                .state('signout', { 
-                    url: '/signout',
-                    auth: false
-                })
-                .state('signup', {
-                    url: '/signup?name&email&server_url',
-                    auth: false,
-                    controller: 'pipSignupController',
-                    templateUrl: 'signup/signup.html'
-                })
-                .state('post_signup', {
-                    url: '/post_signup?party_id',
-                    auth: false,
-                    controller: 'pipPostSignupController',
-                    templateUrl: 'post_signup/post_signup.html',
-                    resolve: {
-                        $party: pipDataPartyProvider.readPartiesResolver() 
-                        // /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipDataSession) {
-                        //     var userId = pipDataSession.userId();
-                        //     var partyId = $stateParams.party_id || userId;
-
-                        //     if (partyId != userId)
-                        //         throw('ERROR_NOT_ALLOWED');
-                        //     return pipRest.parties().get({ id: partyId }).$promise;
-                        // }
-                    }
-                })
-                .state('verify_email', {
-                    url: '/verify_email?server_url&email&code',
-                    auth: false,
-                    controller: 'pipVerifyEmailController',
-                    templateUrl: 'verify_email/verify_email.html'
-                })
-                .state('verify_email_success', {
-                    url: '/verify_email_success',
-                    auth: false,
-                    controller: 'pipVerifyEmailSuccessController',
-                    templateUrl: 'verify_email/verify_email_success.html'
-                });
-
-            // Set default paths and states
-            pipAuthStateProvider.signinState('signin');
-            pipAuthStateProvider.signoutState('signout');
-        }]
-    );
-    
-})();
 (function(module) {
 try {
   module = angular.module('pipEntry.Templates');
@@ -1201,6 +1108,99 @@ module.run(['$templateCache', function($templateCache) {
 })();
 
 /**
+ * @file Entry pages (signin, signup) logic
+ * @copyright Digital Living Software Corp. 2014-2016
+ */
+
+/* global angular */
+
+(function () {
+    'use strict';
+
+    var thisModule = angular.module('pipEntry', 
+        [
+            'ui.router', 'ngMessages', 
+            
+            'pipCore', 'pipData', 'pipBasicControls', 'pipLocations', 'pipPictures', 'pipRest', 'pipRest.State',
+            'pipEntry.Strings', 'pipEntry.Common', 'pipEntry.Signin', 'pipEntry.Signup', 'pipEntry.PostSignup', 
+            'pipEntry.RecoverPassword', 'pipEntry.ResetPassword', 'pipEntry.VerifyEmail', 'pipEntry.Templates'
+        ]);
+
+    thisModule.config(
+        ['$stateProvider', '$locationProvider', '$httpProvider', 'pipAuthStateProvider', 'pipDataPartyProvider', function ($stateProvider, $locationProvider, $httpProvider, pipAuthStateProvider, pipDataPartyProvider) {
+
+            // Switch to HTML5 routing mode
+            //$locationProvider.html5Mode(true);
+
+
+            // Configure module routes for all users
+            $stateProvider
+                .state('signin', {
+                    url: '/signin?email&server_url&redirect_to',
+                    auth: false,
+                    controller: 'pipSigninController',
+                    templateUrl: 'signin/signin.html'
+                })
+                .state('recover_password', {
+                    url: '/recover_password?server_url&email',
+                    auth: false,
+                    controller: 'pipRecoverPasswordController',
+                    templateUrl: 'recover_password/recover_password.html'
+                })
+                .state('reset_password', {
+                    url: '/reset_password?server_url&email&code',
+                    auth: false,
+                    controller: 'pipResetPasswordController',
+                    templateUrl: 'reset_password/reset_password.html'
+                })
+                .state('signout', { 
+                    url: '/signout',
+                    auth: false
+                })
+                .state('signup', {
+                    url: '/signup?name&email&server_url',
+                    auth: false,
+                    controller: 'pipSignupController',
+                    templateUrl: 'signup/signup.html'
+                })
+                .state('post_signup', {
+                    url: '/post_signup?party_id',
+                    auth: false,
+                    controller: 'pipPostSignupController',
+                    templateUrl: 'post_signup/post_signup.html',
+                    resolve: {
+                        $party: pipDataPartyProvider.readPartiesResolver() 
+                        // /* @ngInject */ function ($rootScope, $stateParams, pipRest, pipDataSession) {
+                        //     var userId = pipDataSession.userId();
+                        //     var partyId = $stateParams.party_id || userId;
+
+                        //     if (partyId != userId)
+                        //         throw('ERROR_NOT_ALLOWED');
+                        //     return pipRest.parties().get({ id: partyId }).$promise;
+                        // }
+                    }
+                })
+                .state('verify_email', {
+                    url: '/verify_email?server_url&email&code',
+                    auth: false,
+                    controller: 'pipVerifyEmailController',
+                    templateUrl: 'verify_email/verify_email.html'
+                })
+                .state('verify_email_success', {
+                    url: '/verify_email_success',
+                    auth: false,
+                    controller: 'pipVerifyEmailSuccessController',
+                    templateUrl: 'verify_email/verify_email_success.html'
+                });
+
+            // Set default paths and states
+            pipAuthStateProvider.signinState('signin');
+            pipAuthStateProvider.signoutState('signout');
+        }]
+    );
+    
+})();
+/**
  * @file Checking uniqueness of email in input control
  * @description
  * Email validation is performed on server via /api/signup_validate REST operation
@@ -2304,6 +2304,256 @@ module.run(['$templateCache', function($templateCache) {
 
 })();
 /**
+ * @file Entry signin controller
+ * @copyright Digital Living Software Corp. 2014-2016
+ * @todo
+ * - Remove hack with guide_intro redirect
+ * - Fix error handling
+ */
+
+/* global angular */
+
+(function () {
+    'use strict';
+
+    var thisModule = angular.module('pipEntry.Signin', ['pipEntry.Common', "pipSigninPanel"]);
+
+    thisModule.controller('pipSigninController',
+        ['$scope', '$rootScope', '$location', 'pipTransaction', 'pipAuthState', 'pipDataSession', 'pipFormErrors', 'pipEntryCommon', function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
+            pipFormErrors, pipEntryCommon) {
+
+            pipEntryCommon.configureAppBar();
+            if (!$rootScope.isSignin) pipDataSession.signout(); // hack for set language
+
+            $rootScope.isSignin = false;
+            return;
+
+
+        }]
+    );
+
+})();
+/**
+ * @file Entry signin dialog
+ * @copyright Digital Living Software Corp. 2014-2016
+ */
+
+/* global angular */
+
+(function () {
+    'use strict';
+
+    var thisModule = angular.module('pipEntry.SigninDialog', ['pipEntry.Common', "pipSigninPanel",  'pipEntry.SignupDialog',
+        'pipEntry.RecoverPasswordDialog']);
+
+    thisModule.factory('pipSigninDialog',
+        ['$mdDialog', function ($mdDialog) {
+            return {
+                show: function (params, successCallback, cancelCallback) {
+                    $mdDialog.show({
+                        targetEvent: params.event,
+                        templateUrl: 'signin/signin_dialog.html',
+                        controller: 'pipSigninDialogController',
+                        locals: { params: params },
+                        clickOutsideToClose: true
+                    })
+                        .then(function () {
+                            if (successCallback) {
+                                successCallback();
+                            }
+                        }, function () {
+                            if (cancelCallback) {
+                                cancelCallback();
+                            }
+                        });
+                }
+            };
+        }]
+    );
+
+    thisModule.controller('pipSigninDialogController',
+        ['$scope', '$rootScope', '$location', 'pipDataSession', 'pipSignupDialog', 'pipRecoverPasswordDialog', function ($scope, $rootScope, $location, pipDataSession,  pipSignupDialog, pipRecoverPasswordDialog) {
+
+            //pipEntryCommon.configureAppBar();
+            pipDataSession.signout();
+
+            $scope.pipGotoSignupDialog = pipGotoSignupDialog;
+            $scope.pipGotoRecoverPasswordDialog = pipGotoRecoverPasswordDialog;
+
+            return;
+
+            function pipGotoSignupDialog(){
+                pipSignupDialog.show({});
+            }
+
+            function pipGotoRecoverPasswordDialog(){
+                pipRecoverPasswordDialog.show({});
+            }
+
+        }]
+    );
+
+})();
+/**
+ * @file Signin panel
+ * @copyright Digital Living Software Corp. 2014-2016
+ */
+
+/* global angular */
+
+(function () {
+    'use strict';
+
+    var thisModule = angular.module("pipSigninPanel", ['pipUtils', 'pipFocused', 'pipEntry.Strings']);
+
+    thisModule.directive('pipSigninPanel',
+        function () {
+            return {
+                restrict: 'EA',
+                replace: true,
+                scope: {
+                    gotoSignupPage: '=pipGotoSignupPage',
+                    gotoSignupDialog: '=pipGotoSignupDialog',
+                    gotoRecoverPasswordDialog:'=pipGotoRecoverPasswordDialog',
+                    rememberDefault: '=pipRemember', // set remember check
+                    hideElements: '=pipHideElements' // {remember, title, server, forgotPassword, signup}
+                },
+                templateUrl: 'signin/signin_panel.html',
+                controller: 'pipSigninPanelController'
+
+            };
+        }
+    );
+    thisModule.controller('pipSigninPanelController',
+        ['$scope', '$rootScope', '$location', 'pipTransaction', 'pipAuthState', 'pipDataSession', 'pipFormErrors', 'pipEntryCommon', '$state', '$mdMedia', 'pipTheme', 'pipUtils', function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
+                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTheme, pipUtils) {
+
+            $scope.$mdMedia = $mdMedia;
+
+            setElementVisability();
+
+            $scope.showServerError = true;
+            $scope.transaction = pipTransaction('entry.signin', $scope);
+
+            $scope.touchedErrorsWithHint = pipFormErrors.touchedErrorsWithHint;
+
+            $scope.onSignin = onSignin;
+            $scope.gotoSignup = gotoSignup;
+            $scope.gotoRecoverPassword = gotoRecoverPassword;
+            $scope.onEnter = onEnter;
+
+            pipEntryCommon.initScope($scope);
+
+            return;
+
+            function setElementVisability() {
+                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
+                $scope.hideObject.remember = pipUtils.toBoolean($scope.hideObject.remember) == true;
+                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
+                $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
+                $scope.hideObject.forgotPassword = pipUtils.toBoolean($scope.hideObject.forgotPassword) == true;
+                $scope.hideObject.signup = pipUtils.toBoolean($scope.hideObject.signup) == true;
+                $scope.hideObject.hint = pipUtils.toBoolean($scope.hideObject.hint) == true;
+                $scope.hideObject.progress = pipUtils.toBoolean($scope.hideObject.progress) == true;
+            }
+
+            function gotoSignup(){
+                if(!$scope.gotoSignupPage &&  !$scope.gotoSignupDialog){
+                    $state.go('signup',{ server_url: $scope.data.serverUrl, email: $scope.data.email });
+                    return;
+                }
+                if($scope.gotoSignupPage){
+                    $state.go($scope.gotoSignupPage);
+                    return;
+                }
+                if($scope.gotoSignupDialog){
+                    $scope.gotoSignupDialog();
+                    return;
+                }
+            }
+
+            function gotoRecoverPassword(){
+
+                if(!$scope.gotoRecoverPasswordDialog){
+                    $state.go('recover_password',{ server_url: $scope.data.serverUrl, email: $scope.data.email });
+                    return;
+                }
+                if($scope.gotoRecoverPasswordDialog){
+                    $scope.gotoRecoverPasswordDialog();
+                    return;
+                }
+            }
+  
+            function onSignin() {
+                if ($scope.form.$invalid) {
+                    pipFormErrors.resetFormErrors($scope.form, true);
+                    return;
+                }
+
+                var transactionId = $scope.transaction.begin('ENTERING');
+                if (!transactionId) return;
+
+                $rootScope.isSignin = true;
+                
+                if ($scope.hideObject.remember && !!$scope.rememberDefault) {
+                    $scope.data.remember = true;
+                }
+
+                pipDataSession.signin($scope.data,
+                    function (user) {
+                        pipFormErrors.resetFormErrors($scope.form, false);
+                        if ($scope.transaction.aborted(transactionId))return;
+                        $scope.transaction.end();
+
+                        if (!pipUtils.checkSupported()) {
+                            pipDataSession.signout();
+                            $state.go('errors_unsupported');
+                            return ;
+                        }
+
+                        if (pipAuthState.params.redirect_to) {
+                            $location.url(pipAuthState.params.redirect_to);
+
+                        } else {
+                            pipAuthState.goToAuthorized();
+                        }
+
+
+                    },
+                    function (error) {
+                        $rootScope.isSignin = false;
+                        pipFormErrors.resetFormErrors($scope.form, true);
+                        pipFormErrors.setFormError(
+                            $scope.form, error,
+                            {
+                                1100 : 'email', // Missing email
+                                1106 : 'email', // User was not found
+                                1114 : 'email', // Invalid email
+                                1102 : 'password', // Missing password
+                                1107 : 'password', // Invalid password
+                                1000 : 'form', // Unknown error
+                                1110 : 'form', // Account is locked
+                                1111 : 'form', // Number of attempts exceeded. Account was locked
+                                1112 : 'form', // Account is not active
+                                '-1' : 'form' // server not response
+                            }
+                        );
+                        $scope.transaction.end({message:error});
+
+                    }
+                );
+            };
+
+            function onEnter(event) {
+                if(event.keyCode === 13) {
+                    onSignin();
+                }
+            }
+
+        }])
+
+})();
+/**
  * @file Entry signup controller
  * @copyright Digital Living Software Corp. 2014-2016
  */
@@ -2669,256 +2919,6 @@ module.run(['$templateCache', function($templateCache) {
             };
         }]
     );
-
-})();
-/**
- * @file Entry signin controller
- * @copyright Digital Living Software Corp. 2014-2016
- * @todo
- * - Remove hack with guide_intro redirect
- * - Fix error handling
- */
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    var thisModule = angular.module('pipEntry.Signin', ['pipEntry.Common', "pipSigninPanel"]);
-
-    thisModule.controller('pipSigninController',
-        ['$scope', '$rootScope', '$location', 'pipTransaction', 'pipAuthState', 'pipDataSession', 'pipFormErrors', 'pipEntryCommon', function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
-            pipFormErrors, pipEntryCommon) {
-
-            pipEntryCommon.configureAppBar();
-            if (!$rootScope.isSignin) pipDataSession.signout(); // hack for set language
-
-            $rootScope.isSignin = false;
-            return;
-
-
-        }]
-    );
-
-})();
-/**
- * @file Entry signin dialog
- * @copyright Digital Living Software Corp. 2014-2016
- */
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    var thisModule = angular.module('pipEntry.SigninDialog', ['pipEntry.Common', "pipSigninPanel",  'pipEntry.SignupDialog',
-        'pipEntry.RecoverPasswordDialog']);
-
-    thisModule.factory('pipSigninDialog',
-        ['$mdDialog', function ($mdDialog) {
-            return {
-                show: function (params, successCallback, cancelCallback) {
-                    $mdDialog.show({
-                        targetEvent: params.event,
-                        templateUrl: 'signin/signin_dialog.html',
-                        controller: 'pipSigninDialogController',
-                        locals: { params: params },
-                        clickOutsideToClose: true
-                    })
-                        .then(function () {
-                            if (successCallback) {
-                                successCallback();
-                            }
-                        }, function () {
-                            if (cancelCallback) {
-                                cancelCallback();
-                            }
-                        });
-                }
-            };
-        }]
-    );
-
-    thisModule.controller('pipSigninDialogController',
-        ['$scope', '$rootScope', '$location', 'pipDataSession', 'pipSignupDialog', 'pipRecoverPasswordDialog', function ($scope, $rootScope, $location, pipDataSession,  pipSignupDialog, pipRecoverPasswordDialog) {
-
-            //pipEntryCommon.configureAppBar();
-            pipDataSession.signout();
-
-            $scope.pipGotoSignupDialog = pipGotoSignupDialog;
-            $scope.pipGotoRecoverPasswordDialog = pipGotoRecoverPasswordDialog;
-
-            return;
-
-            function pipGotoSignupDialog(){
-                pipSignupDialog.show({});
-            }
-
-            function pipGotoRecoverPasswordDialog(){
-                pipRecoverPasswordDialog.show({});
-            }
-
-        }]
-    );
-
-})();
-/**
- * @file Signin panel
- * @copyright Digital Living Software Corp. 2014-2016
- */
-
-/* global angular */
-
-(function () {
-    'use strict';
-
-    var thisModule = angular.module("pipSigninPanel", ['pipUtils', 'pipFocused', 'pipEntry.Strings']);
-
-    thisModule.directive('pipSigninPanel',
-        function () {
-            return {
-                restrict: 'EA',
-                replace: true,
-                scope: {
-                    gotoSignupPage: '=pipGotoSignupPage',
-                    gotoSignupDialog: '=pipGotoSignupDialog',
-                    gotoRecoverPasswordDialog:'=pipGotoRecoverPasswordDialog',
-                    rememberDefault: '=pipRemember', // set remember check
-                    hideElements: '=pipHideElements' // {remember, title, server, forgotPassword, signup}
-                },
-                templateUrl: 'signin/signin_panel.html',
-                controller: 'pipSigninPanelController'
-
-            };
-        }
-    );
-    thisModule.controller('pipSigninPanelController',
-        ['$scope', '$rootScope', '$location', 'pipTransaction', 'pipAuthState', 'pipDataSession', 'pipFormErrors', 'pipEntryCommon', '$state', '$mdMedia', 'pipTheme', 'pipUtils', function ($scope, $rootScope, $location, pipTransaction, pipAuthState, pipDataSession,
-                  pipFormErrors, pipEntryCommon, $state, $mdMedia, pipTheme, pipUtils) {
-
-            $scope.$mdMedia = $mdMedia;
-
-            setElementVisability();
-
-            $scope.showServerError = true;
-            $scope.transaction = pipTransaction('entry.signin', $scope);
-
-            $scope.touchedErrorsWithHint = pipFormErrors.touchedErrorsWithHint;
-
-            $scope.onSignin = onSignin;
-            $scope.gotoSignup = gotoSignup;
-            $scope.gotoRecoverPassword = gotoRecoverPassword;
-            $scope.onEnter = onEnter;
-
-            pipEntryCommon.initScope($scope);
-
-            return;
-
-            function setElementVisability() {
-                $scope.hideObject = angular.isObject($scope.hideElements) ? $scope.hideElements : {};
-                $scope.hideObject.remember = pipUtils.toBoolean($scope.hideObject.remember) == true;
-                $scope.hideObject.title = pipUtils.toBoolean($scope.hideObject.title) == true; 
-                $scope.hideObject.server = pipUtils.toBoolean($scope.hideObject.server) == true;
-                $scope.hideObject.forgotPassword = pipUtils.toBoolean($scope.hideObject.forgotPassword) == true;
-                $scope.hideObject.signup = pipUtils.toBoolean($scope.hideObject.signup) == true;
-                $scope.hideObject.hint = pipUtils.toBoolean($scope.hideObject.hint) == true;
-                $scope.hideObject.progress = pipUtils.toBoolean($scope.hideObject.progress) == true;
-            }
-
-            function gotoSignup(){
-                if(!$scope.gotoSignupPage &&  !$scope.gotoSignupDialog){
-                    $state.go('signup',{ server_url: $scope.data.serverUrl, email: $scope.data.email });
-                    return;
-                }
-                if($scope.gotoSignupPage){
-                    $state.go($scope.gotoSignupPage);
-                    return;
-                }
-                if($scope.gotoSignupDialog){
-                    $scope.gotoSignupDialog();
-                    return;
-                }
-            }
-
-            function gotoRecoverPassword(){
-
-                if(!$scope.gotoRecoverPasswordDialog){
-                    $state.go('recover_password',{ server_url: $scope.data.serverUrl, email: $scope.data.email });
-                    return;
-                }
-                if($scope.gotoRecoverPasswordDialog){
-                    $scope.gotoRecoverPasswordDialog();
-                    return;
-                }
-            }
-  
-            function onSignin() {
-                if ($scope.form.$invalid) {
-                    pipFormErrors.resetFormErrors($scope.form, true);
-                    return;
-                }
-
-                var transactionId = $scope.transaction.begin('ENTERING');
-                if (!transactionId) return;
-
-                $rootScope.isSignin = true;
-                
-                if ($scope.hideObject.remember && !!$scope.rememberDefault) {
-                    $scope.data.remember = true;
-                }
-
-                pipDataSession.signin($scope.data,
-                    function (user) {
-                        pipFormErrors.resetFormErrors($scope.form, false);
-                        if ($scope.transaction.aborted(transactionId))return;
-                        $scope.transaction.end();
-
-                        if (!pipUtils.checkSupported()) {
-                            pipDataSession.signout();
-                            $state.go('errors_unsupported');
-                            return ;
-                        }
-
-                        if (pipAuthState.params.redirect_to) {
-                            $location.url(pipAuthState.params.redirect_to);
-
-                        } else {
-                            pipAuthState.goToAuthorized();
-                        }
-
-
-                    },
-                    function (error) {
-                        $rootScope.isSignin = false;
-                        pipFormErrors.resetFormErrors($scope.form, true);
-                        pipFormErrors.setFormError(
-                            $scope.form, error,
-                            {
-                                1100 : 'email', // Missing email
-                                1106 : 'email', // User was not found
-                                1114 : 'email', // Invalid email
-                                1102 : 'password', // Missing password
-                                1107 : 'password', // Invalid password
-                                1000 : 'form', // Unknown error
-                                1110 : 'form', // Account is locked
-                                1111 : 'form', // Number of attempts exceeded. Account was locked
-                                1112 : 'form', // Account is not active
-                                '-1' : 'form' // server not response
-                            }
-                        );
-                        $scope.transaction.end({message:error});
-
-                    }
-                );
-            };
-
-            function onEnter(event) {
-                if(event.keyCode === 13) {
-                    onSignin();
-                }
-            }
-
-        }])
 
 })();
 //# sourceMappingURL=pip-webui-entry.js.map

@@ -337,6 +337,200 @@ try {
   module = angular.module('pipEntry.Templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('signin/signin.html',
+    '<!--\n' +
+    '@file Signin page\n' +
+    '@copyright Digital Living Software Corp. 2014-2016\n' +
+    '-->\n' +
+    '\n' +
+    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
+    '    <pip-card width="400">\n' +
+    '        <pip-signin-panel pipfixedServerUrl="fixedServerUrl" >\n' +
+    '        </pip-signin-panel>\n' +
+    '    </pip-card>\n' +
+    '</div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('pipEntry.Templates');
+} catch (e) {
+  module = angular.module('pipEntry.Templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('signin/signin_dialog.html',
+    '<!--\n' +
+    '@file Signin dialog\n' +
+    '@copyright Digital Living Software Corp. 2014-2016\n' +
+    '-->\n' +
+    '\n' +
+    '<md-dialog class="pip-entry">\n' +
+    '    <md-dialog-content>\n' +
+    '        <pip-signin-panel pip-goto-signup-dialog="pipGotoSignupDialog"\n' +
+    '                          pip-goto-recover-password-dialog="pipGotoRecoverPasswordDialog">\n' +
+    '        </pip-signin-panel>\n' +
+    '    </md-dialog-content>\n' +
+    '</md-dialog>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('pipEntry.Templates');
+} catch (e) {
+  module = angular.module('pipEntry.Templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
+  $templateCache.put('signin/signin_panel.html',
+    '<div class="pip-body">\n' +
+    '    <div class="pip-content">\n' +
+    '        <md-progress-linear ng-show="transaction.busy() && !hideObject.progress" md-mode="indeterminate" class="pip-progress-top">\n' +
+    '        </md-progress-linear>\n' +
+    '\n' +
+    '        <h2 pip-translate="SIGNIN_TITLE" ng-if="!hideObject.title"></h2>\n' +
+    '\n' +
+    '        <form name="form" novalidate>\n' +
+    '            <div ng-messages="form.$serverError" class="text-error bm8 color-error"  md-auto-hide="false">\n' +
+    '                <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
+    '                <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
+    '                <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
+    '                <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
+    '                <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
+    '                <div ng-message="ERROR_UNKNOWN">\n' +
+    '                    {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <a ng-hide="showServerUrl || fixedServerUrl || hideObject.server"\n' +
+    '               ng-click="showServerUrl = true" href=""\n' +
+    '               id="link-server-url"\n' +
+    '               pip-test="link-server-url">\n' +
+    '                {{::\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
+    '            </a>\n' +
+    '\n' +
+    '            <div ng-show="showServerUrl && !hideObject.server">\n' +
+    '                <md-autocomplete\n' +
+    '                        ng-initial autofocus tabindex="1"\n' +
+    '                        class="pip-combobox w-stretch bm8"\n' +
+    '                        name="server"\n' +
+    '                        placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
+    '                        md-no-cache="true"\n' +
+    '                        md-selected-item="data.serverUrl"\n' +
+    '                        md-search-text="selected.searchURLs"\n' +
+    '                        md-items="item in getMatches()"\n' +
+    '                        md-item-text="item"\n' +
+    '                        md-selected-item-change="onServerUrlChanged()"\n' +
+    '                        md-delay="200"\n' +
+    '                        ng-model="data.serverUrl"\n' +
+    '                        ng-disabled="transaction.busy()"\n' +
+    '                        pip-clear-errors\n' +
+    '                        pip-test="autocomplete-server">\n' +
+    '                    <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
+    '                </md-autocomplete>\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <md-input-container class="display  bp4">\n' +
+    '                <label>{{::\'EMAIL\' | translate}}</label>\n' +
+    '                <input name="email" type="email" ng-model="data.email" required step="any"\n' +
+    '                       ng-keypress="onEnter($event)"\n' +
+    '                       pip-clear-errors\n' +
+    '                       ng-disabled="transaction.busy()" tabindex="2"\n' +
+    '                       pip-test="input-email"/>\n' +
+    '\n' +
+    '                <div class="hint" ng-if="touchedErrorsWithHint(form, form.email).hint && !hideObject.hint">\n' +
+    '                    {{::\'HINT_EMAIL\' | translate}}\n' +
+    '                </div>\n' +
+    '                <div ng-messages="touchedErrorsWithHint(form, form.email)" md-auto-hide="false">\n' +
+    '                    <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                    <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                    <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
+    '                    <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
+    '                    <div ng-message="ERROR_1114">{{::\'ERROR_1114\' | translate}}</div>\n' +
+    '                </div>\n' +
+    '            </md-input-container>\n' +
+    '            <md-input-container class="display bp4">\n' +
+    '                <label>{{::\'PASSWORD\' | translate}}</label>\n' +
+    '                <input name="password" ng-disabled="transaction.busy()" pip-clear-errors\n' +
+    '                       type="password" tabindex="3" ng-model="data.password"\n' +
+    '                       ng-keypress="onEnter($event)"\n' +
+    '                       required minlength="6"\n' +
+    '                       pip-test="input-password"/>\n' +
+    '\n' +
+    '                <div class="hint" ng-if="touchedErrorsWithHint(form, form.password).hint && !hideObject.hint">\n' +
+    '                    {{::\'SIGNIN_HINT_PASSWORD\' | translate}}\n' +
+    '                </div>\n' +
+    '                <div ng-messages="touchedErrorsWithHint(form, form.password)"  md-auto-hide="false">\n' +
+    '                    <div ng-message="required">{{::\'SIGNIN_HINT_PASSWORD\' | translate}}</div>\n' +
+    '                    <div ng-message="ERROR_1102">{{::\'ERROR_1102\' | translate}}</div>\n' +
+    '                    <div ng-message="ERROR_1107">{{::\'ERROR_1107\' | translate}}</div>\n' +
+    '                </div>\n' +
+    '            </md-input-container>\n' +
+    '            <a href="" class="display bm16"\n' +
+    '               ng-if="!hideObject.forgotPassword"\n' +
+    '               ng-click="gotoRecoverPassword()"\n' +
+    '               tabindex="4">\n' +
+    '                {{::\'SIGNIN_FORGOT_PASSWORD\' | translate}}\n' +
+    '            </a>\n' +
+    '\n' +
+    '            <md-checkbox ng-disabled="transaction.busy()" \n' +
+    '                         ng-if="!hideObject.forgotPassword"\n' +
+    '                         md-no-ink class="lm0"\n' +
+    '                         aria-label="{{\'SIGNIN_REMEMBER\' | translate}}" tabindex="5"\n' +
+    '                         ng-model="data.remember"\n' +
+    '                         pip-test-checkbox="remember">\n' +
+    '                <label class="label-check">{{::\'SIGNIN_REMEMBER\' | translate}}</label>\n' +
+    '            </md-checkbox>\n' +
+    '\n' +
+    '            <div style="height: 36px; overflow: hidden;">\n' +
+    '                <md-button ng-if="!transaction.busy()" ng-click="onSignin()" aria-label="SIGNIN"\n' +
+    '                           class="md-raised md-accent w-stretch m0" tabindex="6"\n' +
+    '                           ng-disabled="(data.email == undefined) || data.email.length == 0 || data.serverUrl == \'\' ||\n' +
+    '                                   data.serverUrl == undefined || data.serverUrl.length == 0 || (data.password == undefined)"\n' +
+    '                           pip-test="button-signin">\n' +
+    '                    {{::\'SIGNIN_TITLE\' | translate}}\n' +
+    '                </md-button>\n' +
+    '                <md-button ng-if="transaction.busy()" ng-click="transaction.abort()" class="md-raised md-warn m0 w-stretch"\n' +
+    '                           tabindex="5" aria-label="ABORT"\n' +
+    '                           pip-test="button-cancel">\n' +
+    '                    {{::\'CANCEL\' | translate}}\n' +
+    '                </md-button>\n' +
+    '            </div>\n' +
+    '            <div class="tm24 layout-row" ng-if="!adminOnly && $mdMedia(\'gt-xs\') && !hideObject.signup">\n' +
+    '                <p class="m0 text-small"> <!--  <p class="a-question-text">  -->\n' +
+    '                    {{::\'SIGNIN_NOT_MEMBER\' | translate}}\n' +
+    '                    <a href=""\n' +
+    '                       ng-click="gotoSignup()"\n' +
+    '                       tabindex="6">\n' +
+    '                        {{::\'SIGNIN_SIGNUP_HERE\' | translate}}\n' +
+    '                    </a>\n' +
+    '                </p>\n' +
+    '            </div>\n' +
+    '\n' +
+    '            <div class="tm24 divider-top text-signup" \n' +
+    '                 ng-if="!adminOnly && $mdMedia(\'xs\') && !hideObject.signup">\n' +
+    '                <div class="h48 layout-row layout-align-center-end">\n' +
+    '                    <p class="m0 text-small">{{::\'SIGNIN_NOT_MEMBER\' | translate}}</p>\n' +
+    '                </div>\n' +
+    '                <div class="h48 layout-row layout-align-center-start">\n' +
+    '                    <a class="text-small" ng-click="gotoSignup()" href="" tabindex="6">\n' +
+    '                        {{::\'SIGNIN_SIGNUP_HERE\' | translate}}\n' +
+    '                    </a>\n' +
+    '                </div>\n' +
+    '            </div>\n' +
+    '        </form>\n' +
+    '    </div>\n' +
+    '</div>');
+}]);
+})();
+
+(function(module) {
+try {
+  module = angular.module('pipEntry.Templates');
+} catch (e) {
+  module = angular.module('pipEntry.Templates', []);
+}
+module.run(['$templateCache', function($templateCache) {
   $templateCache.put('reset_password/reset_password.html',
     '<!--\n' +
     '@file Password reset page\n' +
@@ -530,16 +724,106 @@ try {
   module = angular.module('pipEntry.Templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('signin/signin.html',
+  $templateCache.put('verify_email/verify_email.html',
     '<!--\n' +
-    '@file Signin page\n' +
+    '@file Verify email page\n' +
     '@copyright Digital Living Software Corp. 2014-2016\n' +
     '-->\n' +
     '\n' +
     '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
     '    <pip-card width="400">\n' +
-    '        <pip-signin-panel pipfixedServerUrl="fixedServerUrl" >\n' +
-    '        </pip-signin-panel>\n' +
+    '        <div class="pip-body">\n' +
+    '            <div class="pip-content">\n' +
+    '                <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top" >\n' +
+    '                </md-progress-linear>\n' +
+    '\n' +
+    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
+    '\n' +
+    '                <p class="title-padding">{{\'VERIFY_EMAIL_TEXT_1\' | translate}} </p>\n' +
+    '\n' +
+    '                <form name=\'form\' novalidate>\n' +
+    '                    <div ng-messages="form.$serverError" class="text-error bm8">\n' +
+    '                        <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
+    '                        <div ng-message="ERROR_UNKNOWN">\n' +
+    '                            {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
+    '                        </div>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                    <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">      \n' +
+    '                        {{\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
+    '                    </a>\n' +
+    '                    <div ng-show="showServerUrl">\n' +
+    '                        <md-autocomplete\n' +
+    '                                ng-initial autofocus tabindex="1"\n' +
+    '                                class="pip-combobox w-stretch bm8"\n' +
+    '                                name="server"\n' +
+    '                                ng-enabled="!transaction.busy()"\n' +
+    '                                placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
+    '                                md-no-cache="true"\n' +
+    '                                md-selected-item="data.serverUrl"\n' +
+    '                                md-search-text="selected.searchURLs"\n' +
+    '                                md-items="item in getMatches()"\n' +
+    '                                md-item-text="item"\n' +
+    '                                md-selected-item-change="onServerUrlChanged()"\n' +
+    '                                md-delay="200"\n' +
+    '                                ng-model="data.serverUrl"\n' +
+    '                                pip-clear-errors>\n' +
+    '                            <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
+    '                        </md-autocomplete>\n' +
+    '                    </div>\n' +
+    '\n' +
+    '                    <md-input-container class="pip-no-hint" style="padding-bottom: 4px!important;">\n' +
+    '                        <label>{{::\'EMAIL\' | translate}}</label>\n' +
+    '                        <input name="email" type="email" ng-model="data.email" required step="any"  pip-clear-errors\n' +
+    '                               ng-disabled="transaction.busy()" tabindex="2" />\n' +
+    '\n' +
+    '                        <div ng-messages="touchedErrorsWithHint(form, form.email)" ng-if="!form.email.$pristine" class="md-input-error">\n' +
+    '                            <div ng-message="hint" class="pip-input-hint">{{::\'HINT_EMAIL\' | translate}}</div>\n' +
+    '                            <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1104">{{::\'ERROR_1104\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1305">{{::\'ERROR_1305\' | translate}}</div>\n' +
+    '                            <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
+    '                        </div>\n' +
+    '                    </md-input-container>\n' +
+    '\n' +
+    '                    <md-input-container class="pip-no-hint">\n' +
+    '                        <label>{{::\'ENTRY_RESET_CODE\' | translate}}</label>\n' +
+    '                        <input name="code" ng-disabled="transaction.busy()"\n' +
+    '                               ng-model="data.code" required tabindex="3" />\n' +
+    '\n' +
+    '                        <div ng-messages="touchedErrorsWithHint(form, form.code)" ng-if="!form.fullName.$pristine" class="md-input-error">\n' +
+    '                            <div ng-message="hint" class="pip-input-hint">{{::\'ENTRY_RESET_CODE\' | translate}}</div>\n' +
+    '                            <div ng-message="required">{{::\'ERROR_CODE_INVALID\' | translate }}</div>\n' +
+    '                            <div ng-message="ERROR_1108">{{::\'ERROR_1108\' | translate}}</div>\n' +
+    '                        </div>\n' +
+    '                    </md-input-container>\n' +
+    '\n' +
+    '                    <p> \n' +
+    '                        {{\'VERIFY_EMAIL_TEXT_21\' | translate}} \n' +
+    '                        <a ng-click="onRecover()" class="pointer" href="">{{\'VERIFY_EMAIL_RESEND\' | translate}}</a>\n' +
+    '                        {{\'VERIFY_EMAIL_TEXT_22\' | translate}} \n' +
+    '                    </p>\n' +
+    '                </form>\n' +
+    '            </div>\n' +
+    '        </div>\n' +
+    '        <div class="pip-footer">\n' +
+    '            <md-button ng-click="goBack()" ng-hide="transaction.busy()" class="rm8" aria-label="CANCEL">\n' +
+    '                {{::\'CANCEL\' | translate}}\n' +
+    '            </md-button>\n' +
+    '            <md-button class="md-accent" ng-click="onVerify()" ng-hide="transaction.busy()" aria-label="VERIFY"\n' +
+    '                ng-disabled="data.code.length == 0 || data.email.length == 0 || (!data.email && form.$pristine) || (!data.code)">\n' +
+    '                {{::\'VERIFY\' | translate}}\n' +
+    '            </md-button>\n' +
+    '            <md-button class="md-warn " ng-show="transaction.busy()" ng-click="transaction.abort()" aria-label="ABORT">\n' +
+    '                {{::\'CANCEL\' | translate}}\n' +
+    '            </md-button>\n' +
+    '        </div>\n' +
     '    </pip-card>\n' +
     '</div>');
 }]);
@@ -552,167 +836,29 @@ try {
   module = angular.module('pipEntry.Templates', []);
 }
 module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('signin/signin_dialog.html',
+  $templateCache.put('verify_email/verify_email_success.html',
     '<!--\n' +
-    '@file Signin dialog\n' +
+    '@file Email verification success page\n' +
     '@copyright Digital Living Software Corp. 2014-2016\n' +
     '-->\n' +
     '\n' +
-    '<md-dialog class="pip-entry">\n' +
-    '    <md-dialog-content>\n' +
-    '        <pip-signin-panel pip-goto-signup-dialog="pipGotoSignupDialog"\n' +
-    '                          pip-goto-recover-password-dialog="pipGotoRecoverPasswordDialog">\n' +
-    '        </pip-signin-panel>\n' +
-    '    </md-dialog-content>\n' +
-    '</md-dialog>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('pipEntry.Templates');
-} catch (e) {
-  module = angular.module('pipEntry.Templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('signin/signin_panel.html',
-    '<div class="pip-body">\n' +
-    '    <div class="pip-content">\n' +
-    '        <md-progress-linear ng-show="transaction.busy() && !hideObject.progress" md-mode="indeterminate" class="pip-progress-top">\n' +
-    '        </md-progress-linear>\n' +
+    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
+    '    <pip-card width="400">\n' +
+    '        <div class="pip-footer">\n' +
+    '            <md-button ng-click="onContinue()" class="md-accent">\n' +
+    '                {{\'CONTINUE\' | translate}} \n' +
+    '            </md-button>\n' +
+    '        </div>\n' +
+    '        <div class="pip-body">\n' +
+    '            <div class="pip-content">\n' +
+    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
     '\n' +
-    '        <h2 pip-translate="SIGNIN_TITLE" ng-if="!hideObject.title"></h2>\n' +
-    '\n' +
-    '        <form name="form" novalidate>\n' +
-    '            <div ng-messages="form.$serverError" class="text-error bm8 color-error"  md-auto-hide="false">\n' +
-    '                <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
-    '                <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
-    '                <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
-    '                <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
-    '                <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
-    '                <div ng-message="ERROR_UNKNOWN">\n' +
-    '                    {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <a ng-hide="showServerUrl || fixedServerUrl || hideObject.server"\n' +
-    '               ng-click="showServerUrl = true" href=""\n' +
-    '               id="link-server-url"\n' +
-    '               pip-test="link-server-url">\n' +
-    '                {{::\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
-    '            </a>\n' +
-    '\n' +
-    '            <div ng-show="showServerUrl && !hideObject.server">\n' +
-    '                <md-autocomplete\n' +
-    '                        ng-initial autofocus tabindex="1"\n' +
-    '                        class="pip-combobox w-stretch bm8"\n' +
-    '                        name="server"\n' +
-    '                        placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
-    '                        md-no-cache="true"\n' +
-    '                        md-selected-item="data.serverUrl"\n' +
-    '                        md-search-text="selected.searchURLs"\n' +
-    '                        md-items="item in getMatches()"\n' +
-    '                        md-item-text="item"\n' +
-    '                        md-selected-item-change="onServerUrlChanged()"\n' +
-    '                        md-delay="200"\n' +
-    '                        ng-model="data.serverUrl"\n' +
-    '                        ng-disabled="transaction.busy()"\n' +
-    '                        pip-clear-errors\n' +
-    '                        pip-test="autocomplete-server">\n' +
-    '                    <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
-    '                </md-autocomplete>\n' +
-    '            </div>\n' +
-    '\n' +
-    '            <md-input-container class="display  bp4">\n' +
-    '                <label>{{::\'EMAIL\' | translate}}</label>\n' +
-    '                <input name="email" type="email" ng-model="data.email" required step="any"\n' +
-    '                       ng-keypress="onEnter($event)"\n' +
-    '                       pip-clear-errors\n' +
-    '                       ng-disabled="transaction.busy()" tabindex="2"\n' +
-    '                       pip-test="input-email"/>\n' +
-    '\n' +
-    '                <div class="hint" ng-if="touchedErrorsWithHint(form, form.email).hint && !hideObject.hint">\n' +
-    '                    {{::\'HINT_EMAIL\' | translate}}\n' +
-    '                </div>\n' +
-    '                <div ng-messages="touchedErrorsWithHint(form, form.email)" md-auto-hide="false">\n' +
-    '                    <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                    <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                    <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
-    '                    <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
-    '                    <div ng-message="ERROR_1114">{{::\'ERROR_1114\' | translate}}</div>\n' +
-    '                </div>\n' +
-    '            </md-input-container>\n' +
-    '            <md-input-container class="display bp4">\n' +
-    '                <label>{{::\'PASSWORD\' | translate}}</label>\n' +
-    '                <input name="password" ng-disabled="transaction.busy()" pip-clear-errors\n' +
-    '                       type="password" tabindex="3" ng-model="data.password"\n' +
-    '                       ng-keypress="onEnter($event)"\n' +
-    '                       required minlength="6"\n' +
-    '                       pip-test="input-password"/>\n' +
-    '\n' +
-    '                <div class="hint" ng-if="touchedErrorsWithHint(form, form.password).hint && !hideObject.hint">\n' +
-    '                    {{::\'SIGNIN_HINT_PASSWORD\' | translate}}\n' +
-    '                </div>\n' +
-    '                <div ng-messages="touchedErrorsWithHint(form, form.password)"  md-auto-hide="false">\n' +
-    '                    <div ng-message="required">{{::\'SIGNIN_HINT_PASSWORD\' | translate}}</div>\n' +
-    '                    <div ng-message="ERROR_1102">{{::\'ERROR_1102\' | translate}}</div>\n' +
-    '                    <div ng-message="ERROR_1107">{{::\'ERROR_1107\' | translate}}</div>\n' +
-    '                </div>\n' +
-    '            </md-input-container>\n' +
-    '            <a href="" class="display bm16"\n' +
-    '               ng-if="!hideObject.forgotPassword"\n' +
-    '               ng-click="gotoRecoverPassword()"\n' +
-    '               tabindex="4">\n' +
-    '                {{::\'SIGNIN_FORGOT_PASSWORD\' | translate}}\n' +
-    '            </a>\n' +
-    '\n' +
-    '            <md-checkbox ng-disabled="transaction.busy()" \n' +
-    '                         ng-if="!hideObject.forgotPassword"\n' +
-    '                         md-no-ink class="lm0"\n' +
-    '                         aria-label="{{\'SIGNIN_REMEMBER\' | translate}}" tabindex="5"\n' +
-    '                         ng-model="data.remember"\n' +
-    '                         pip-test-checkbox="remember">\n' +
-    '                <label class="label-check">{{::\'SIGNIN_REMEMBER\' | translate}}</label>\n' +
-    '            </md-checkbox>\n' +
-    '\n' +
-    '            <div style="height: 36px; overflow: hidden;">\n' +
-    '                <md-button ng-if="!transaction.busy()" ng-click="onSignin()" aria-label="SIGNIN"\n' +
-    '                           class="md-raised md-accent w-stretch m0" tabindex="6"\n' +
-    '                           ng-disabled="(data.email == undefined) || data.email.length == 0 || data.serverUrl == \'\' ||\n' +
-    '                                   data.serverUrl == undefined || data.serverUrl.length == 0 || (data.password == undefined)"\n' +
-    '                           pip-test="button-signin">\n' +
-    '                    {{::\'SIGNIN_TITLE\' | translate}}\n' +
-    '                </md-button>\n' +
-    '                <md-button ng-if="transaction.busy()" ng-click="transaction.abort()" class="md-raised md-warn m0 w-stretch"\n' +
-    '                           tabindex="5" aria-label="ABORT"\n' +
-    '                           pip-test="button-cancel">\n' +
-    '                    {{::\'CANCEL\' | translate}}\n' +
-    '                </md-button>\n' +
-    '            </div>\n' +
-    '            <div class="tm24 layout-row" ng-if="!adminOnly && $mdMedia(\'gt-xs\') && !hideObject.signup">\n' +
-    '                <p class="m0 text-small"> <!--  <p class="a-question-text">  -->\n' +
-    '                    {{::\'SIGNIN_NOT_MEMBER\' | translate}}\n' +
-    '                    <a href=""\n' +
-    '                       ng-click="gotoSignup()"\n' +
-    '                       tabindex="6">\n' +
-    '                        {{::\'SIGNIN_SIGNUP_HERE\' | translate}}\n' +
-    '                    </a>\n' +
+    '                <p class="title-padding">\n' +
+    '                    {{\'VERIFY_EMAIL_SUCCESS_TEXT\' | translate}} \n' +
     '                </p>\n' +
     '            </div>\n' +
-    '\n' +
-    '            <div class="tm24 divider-top text-signup" \n' +
-    '                 ng-if="!adminOnly && $mdMedia(\'xs\') && !hideObject.signup">\n' +
-    '                <div class="h48 layout-row layout-align-center-end">\n' +
-    '                    <p class="m0 text-small">{{::\'SIGNIN_NOT_MEMBER\' | translate}}</p>\n' +
-    '                </div>\n' +
-    '                <div class="h48 layout-row layout-align-center-start">\n' +
-    '                    <a class="text-small" ng-click="gotoSignup()" href="" tabindex="6">\n' +
-    '                        {{::\'SIGNIN_SIGNUP_HERE\' | translate}}\n' +
-    '                    </a>\n' +
-    '                </div>\n' +
-    '            </div>\n' +
-    '        </form>\n' +
-    '    </div>\n' +
+    '        </div>\n' +
+    '    </pip-card>\n' +
     '</div>');
 }]);
 })();
@@ -957,152 +1103,6 @@ module.run(['$templateCache', function($templateCache) {
     '            </div>\n' +
     '        </form>\n' +
     '    </div>\n' +
-    '</div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('pipEntry.Templates');
-} catch (e) {
-  module = angular.module('pipEntry.Templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('verify_email/verify_email.html',
-    '<!--\n' +
-    '@file Verify email page\n' +
-    '@copyright Digital Living Software Corp. 2014-2016\n' +
-    '-->\n' +
-    '\n' +
-    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
-    '    <pip-card width="400">\n' +
-    '        <div class="pip-body">\n' +
-    '            <div class="pip-content">\n' +
-    '                <md-progress-linear ng-show="transaction.busy()" md-mode="indeterminate" class="pip-progress-top" >\n' +
-    '                </md-progress-linear>\n' +
-    '\n' +
-    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
-    '\n' +
-    '                <p class="title-padding">{{\'VERIFY_EMAIL_TEXT_1\' | translate}} </p>\n' +
-    '\n' +
-    '                <form name=\'form\' novalidate>\n' +
-    '                    <div ng-messages="form.$serverError" class="text-error bm8">\n' +
-    '                        <div ng-message="ERROR_1000">{{::\'ERROR_1000\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1110">{{::\'ERROR_1110\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1111">{{::\'ERROR_1111\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_1112">{{::\'ERROR_1112\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_-1">{{::\'ERROR_SERVER\' | translate}}</div>\n' +
-    '                        <div ng-message="ERROR_UNKNOWN">\n' +
-    '                            {{ form.$serverError.ERROR_UNKNOWN | translate }}\n' +
-    '                        </div>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                    <a ng-hide="showServerUrl || fixedServerUrl" ng-click="showServerUrl = true" href="">      \n' +
-    '                        {{\'ENTRY_CHANGE_SERVER\' | translate}}\n' +
-    '                    </a>\n' +
-    '                    <div ng-show="showServerUrl">\n' +
-    '                        <md-autocomplete\n' +
-    '                                ng-initial autofocus tabindex="1"\n' +
-    '                                class="pip-combobox w-stretch bm8"\n' +
-    '                                name="server"\n' +
-    '                                ng-enabled="!transaction.busy()"\n' +
-    '                                placeholder="{{::\'ENTRY_SERVER_URL\' | translate}}"\n' +
-    '                                md-no-cache="true"\n' +
-    '                                md-selected-item="data.serverUrl"\n' +
-    '                                md-search-text="selected.searchURLs"\n' +
-    '                                md-items="item in getMatches()"\n' +
-    '                                md-item-text="item"\n' +
-    '                                md-selected-item-change="onServerUrlChanged()"\n' +
-    '                                md-delay="200"\n' +
-    '                                ng-model="data.serverUrl"\n' +
-    '                                pip-clear-errors>\n' +
-    '                            <span md-highlight-text="selected.searchURLs">{{item}}</span>\n' +
-    '                        </md-autocomplete>\n' +
-    '                    </div>\n' +
-    '\n' +
-    '                    <md-input-container class="pip-no-hint" style="padding-bottom: 4px!important;">\n' +
-    '                        <label>{{::\'EMAIL\' | translate}}</label>\n' +
-    '                        <input name="email" type="email" ng-model="data.email" required step="any"  pip-clear-errors\n' +
-    '                               ng-disabled="transaction.busy()" tabindex="2" />\n' +
-    '\n' +
-    '                        <div ng-messages="touchedErrorsWithHint(form, form.email)" ng-if="!form.email.$pristine" class="md-input-error">\n' +
-    '                            <div ng-message="hint" class="pip-input-hint">{{::\'HINT_EMAIL\' | translate}}</div>\n' +
-    '                            <div ng-message="required">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="email">{{::\'ERROR_EMAIL_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="ERROR_1100">{{::\'ERROR_1100\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1104">{{::\'ERROR_1104\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1305">{{::\'ERROR_1305\' | translate}}</div>\n' +
-    '                            <div ng-message="ERROR_1106">{{::\'ERROR_1106\' | translate}}</div>\n' +
-    '                        </div>\n' +
-    '                    </md-input-container>\n' +
-    '\n' +
-    '                    <md-input-container class="pip-no-hint">\n' +
-    '                        <label>{{::\'ENTRY_RESET_CODE\' | translate}}</label>\n' +
-    '                        <input name="code" ng-disabled="transaction.busy()"\n' +
-    '                               ng-model="data.code" required tabindex="3" />\n' +
-    '\n' +
-    '                        <div ng-messages="touchedErrorsWithHint(form, form.code)" ng-if="!form.fullName.$pristine" class="md-input-error">\n' +
-    '                            <div ng-message="hint" class="pip-input-hint">{{::\'ENTRY_RESET_CODE\' | translate}}</div>\n' +
-    '                            <div ng-message="required">{{::\'ERROR_CODE_INVALID\' | translate }}</div>\n' +
-    '                            <div ng-message="ERROR_1108">{{::\'ERROR_1108\' | translate}}</div>\n' +
-    '                        </div>\n' +
-    '                    </md-input-container>\n' +
-    '\n' +
-    '                    <p> \n' +
-    '                        {{\'VERIFY_EMAIL_TEXT_21\' | translate}} \n' +
-    '                        <a ng-click="onRecover()" class="pointer" href="">{{\'VERIFY_EMAIL_RESEND\' | translate}}</a>\n' +
-    '                        {{\'VERIFY_EMAIL_TEXT_22\' | translate}} \n' +
-    '                    </p>\n' +
-    '                </form>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '        <div class="pip-footer">\n' +
-    '            <md-button ng-click="goBack()" ng-hide="transaction.busy()" class="rm8" aria-label="CANCEL">\n' +
-    '                {{::\'CANCEL\' | translate}}\n' +
-    '            </md-button>\n' +
-    '            <md-button class="md-accent" ng-click="onVerify()" ng-hide="transaction.busy()" aria-label="VERIFY"\n' +
-    '                ng-disabled="data.code.length == 0 || data.email.length == 0 || (!data.email && form.$pristine) || (!data.code)">\n' +
-    '                {{::\'VERIFY\' | translate}}\n' +
-    '            </md-button>\n' +
-    '            <md-button class="md-warn " ng-show="transaction.busy()" ng-click="transaction.abort()" aria-label="ABORT">\n' +
-    '                {{::\'CANCEL\' | translate}}\n' +
-    '            </md-button>\n' +
-    '        </div>\n' +
-    '    </pip-card>\n' +
-    '</div>');
-}]);
-})();
-
-(function(module) {
-try {
-  module = angular.module('pipEntry.Templates');
-} catch (e) {
-  module = angular.module('pipEntry.Templates', []);
-}
-module.run(['$templateCache', function($templateCache) {
-  $templateCache.put('verify_email/verify_email_success.html',
-    '<!--\n' +
-    '@file Email verification success page\n' +
-    '@copyright Digital Living Software Corp. 2014-2016\n' +
-    '-->\n' +
-    '\n' +
-    '<div class="pip-card-container pip-outer-scroll pip-entry">\n' +
-    '    <pip-card width="400">\n' +
-    '        <div class="pip-footer">\n' +
-    '            <md-button ng-click="onContinue()" class="md-accent">\n' +
-    '                {{\'CONTINUE\' | translate}} \n' +
-    '            </md-button>\n' +
-    '        </div>\n' +
-    '        <div class="pip-body">\n' +
-    '            <div class="pip-content">\n' +
-    '                <h2>{{\'VERIFY_EMAIL_TITLE\' | translate}}</h2>\n' +
-    '\n' +
-    '                <p class="title-padding">\n' +
-    '                    {{\'VERIFY_EMAIL_SUCCESS_TEXT\' | translate}} \n' +
-    '                </p>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '    </pip-card>\n' +
     '</div>');
 }]);
 })();
